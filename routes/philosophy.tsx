@@ -1,9 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
-import Counter from "../islands/Counter.tsx";
 import Header from "../components/Header.tsx";
-import Checklist from "../components/Checklist.tsx";
-
-export default function Home() {
+import PhilosophyDescription from "../components/Philosophy.tsx";
+export default function Philosophy() {
   return (
     <>
       <Head>
@@ -12,9 +10,9 @@ export default function Home() {
         <title>10clicks.org</title>
       </Head>
       <div>
-        <Header />
-        <Checklist />
+        <Header/> 
+        <PhilosophyDescription/>
       </div>
     </>
-  );
+  )
 }
