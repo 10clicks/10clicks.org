@@ -1,4 +1,4 @@
-import ChecklistItem from "./ChecklistItem.tsx"
+import ChecklistItem from "../islands/ChecklistItem.tsx"
 
 const data = [
   {
