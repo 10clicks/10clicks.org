@@ -8,7 +8,7 @@ export default function DevelopersDescription() {
         <p className="font-normal" style={{
           color: "#888888"
         }}>
-          Test, <br />
+          <br />Test, <br />
           Ben and Oleks go below
           <br /><br />
           Best regards,
