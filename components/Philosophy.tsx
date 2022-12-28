@@ -2,10 +2,10 @@ export default function Philosophy() {
   return (
     <div className="lg:w-2/3 p-4 mx-auto mt-12">
       <div>
-        <h1 className="font-light text-2xl">Philosophy</h1>
+        <h1 className="font-normal text-2xl">Philosophy</h1>
       </div>
       <div className="flex flex-col gap-4 mt-4 items-center">
-      <p className="font-light" style={{
+      <p className="font-normal" style={{
         color: "#888888"
       }}>
         Dear valued site patron, <br />
@@ -24,7 +24,7 @@ export default function Philosophy() {
         <br /><br />
         Below are the listed requisites for happiness.
       </p>
-      <ul className="font-light mr-auto" style={{
+      <ul className="font-normal mr-auto" style={{
         color: "#888888"
       }}>
         <li>Adequate sleep.</li>
