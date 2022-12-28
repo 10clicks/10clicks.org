@@ -47,12 +47,12 @@ export default function Checklist() {
   return (
     <div className="lg:w-2/3 p-4 mx-auto mt-12">
       <div className="flex lg:flex-row flex-col gap-4 items-center">
-        <h1 className="font-extralight text-2xl">Checklist</h1>
+        <h1 className="font-light text-2xl">Checklist</h1>
         <p style={
           {
             color: "#888888"
           }
-        } className="font-extralight text-base">List is loosely ordered but should attempt to be followed in sequence. </p>
+        } className="font-light text-base">List is loosely ordered but should attempt to be followed in sequence. </p>
       </div>
       <div className="flex flex-col gap-4 mt-4 items-center">
         {data.map((item) => {

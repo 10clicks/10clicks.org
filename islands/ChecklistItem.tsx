@@ -42,13 +42,13 @@ export default function ChecklistItem(props: ChecklistItemProps) {
       aria-role="button"
       ref={checklistButton}
     >
-      <div className="font-extralight bg-white rounded-full lg:h-8 lg:w-8 h-20 w-20 flex-shrink-0"/>
-      <h2 className="font-extralight w-16 flex-shrink-0 text-left">{props.name}</h2>
+      <div className="font-light bg-white rounded-full lg:h-8 lg:w-8 h-20 w-20 flex-shrink-0"/>
+      <h2 className="font-light w-16 flex-shrink-0 text-left">{props.name}</h2>
       <p style={
         {
           color: "#888888"
         }
-      } className="font-extralight lg:text-base text-sm">{props.description}</p>
+      } className="font-light lg:text-base text-sm">{props.description}</p>
     </a>
   )
 }

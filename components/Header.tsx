@@ -12,7 +12,7 @@ export default function Header() {
         {
           'color': "#333333"
         }
-      } className="justify-end flex flex-row items-center gap-4 pr-8 h-full font-extralight text-lg">
+      } className="justify-end flex flex-row items-center gap-4 pr-8 h-full font-light text-lg">
         <a className="flex flex-row items-center gap-2 mr-auto ml-8 font-bold text-3xl" href="/">
           <img src="/10c_logo.png" alt="logo" class="rounded h-12 w-12"/>
           <h1 className="text-4xl font-semibold">10clicks.org</h1>
