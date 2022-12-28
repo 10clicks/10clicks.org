@@ -18,7 +18,7 @@ export default function Header() {
           <h1 className="text-4xl font-semibold">10clicks.org</h1>
         </a>
         <a href="/philosophy">Philosophy</a>
-        <a>Developers</a>
+        <a href="/developers">Developers</a>
       </div>
     </div>
   )
