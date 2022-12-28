@@ -9,25 +9,30 @@ export default function ChecklistItem(props: ChecklistItemProps) {
   function turnOnChecklistItem() {
     // return the scale of the button back to 1
     if (!checklistButton.current) return;
-    setIsClicked(true);
-    checklistButton.current.style.transform = "scale(1)";
-    // shake the button
-    checklistButton.current.animate([
-      { transform: "translateX(0px)", rotate: "0deg" },
-      { transform: "translateX(3px)", rotate: "0.2deg" },
-      { transform: "translateX(-3px)", rotate: "-0.2deg" },
-      { transform: "translateX(3px)", rotate: "0.2deg" },
-      { transform: "translateX(-3px)", rotate: "-0.2deg" },
-      { transform: "translateX(3px)", rotate: "0.2deg" },
-      { transform: "translateX(-3px)", rotate: "-0.2deg" },
-      { transform: "translateX(0px)", rotate: "0deg" },
-    ], {
-      duration: 500,
-      iterations: 1
-    });
-    // make the div inside the button green
-    (checklistButton.current.children[0] as HTMLDivElement).style.background = "#26A65B";
-
+    if (!isClicked) {
+      setIsClicked(true);
+      checklistButton.current.style.transform = "scale(1)";
+      // shake the button
+      checklistButton.current.animate([
+        { transform: "translateX(0px)", rotate: "0deg" },
+        { transform: "translateX(3px)", rotate: "0.2deg" },
+        { transform: "translateX(-3px)", rotate: "-0.2deg" },
+        { transform: "translateX(3px)", rotate: "0.2deg" },
+        { transform: "translateX(-3px)", rotate: "-0.2deg" },
+        { transform: "translateX(3px)", rotate: "0.2deg" },
+        { transform: "translateX(-3px)", rotate: "-0.2deg" },
+        { transform: "translateX(0px)", rotate: "0deg" },
+      ], {
+        duration: 500,
+        iterations: 1
+      });
+      // make the div inside the button green
+      (checklistButton.current.children[0] as HTMLDivElement).style.background = "#26A65B";
+    } else {
+      setIsClicked(false);
+      checklistButton.current.style.transform = "";
+      (checklistButton.current.children[0] as HTMLDivElement).style.background = "#FFFFFF";
+    }
   }
 
   return (

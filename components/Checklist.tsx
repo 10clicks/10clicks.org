@@ -1,5 +1,5 @@
 import ChecklistItem from "../islands/ChecklistItem.tsx"
-
+import DailyUseChart from "./DailyUseChart.tsx"
 const data = [
   {
     name: "Sleep",
@@ -61,6 +61,7 @@ export default function Checklist() {
           )
         })}
       </div>
+      <DailyUseChart />
     </div>
   )
 }
