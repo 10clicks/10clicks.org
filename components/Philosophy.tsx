@@ -4,23 +4,23 @@ export default function PhilosophyDescription() {
       <div>
         <h1 className="font-normal text-2xl">Philosophy</h1>
       </div>
-      <div className="flex flex-col gap-4 mt-4 items-center">
+      <div className="flex flex-col gap-4 mt-4">
       <p className="font-normal" style={{
         color: "#888888"
       }}>
         Dear valued site patron, <br />
-        We would like to explain the philosophy behind these items. <br />
-        Going into our senior year of high school Ben, one of the developers, was unhappy with how he spent his three of four years. 
-        Ben had made good friends and memories but near the end of it he realized the importance of doing what you enjoy, 
-        not what you think looks good on a resume. He pitched his ideals of a content life to his good friend 
-        and co-developer Oleksandr Gorpynich with strong success. <br /><br />
-
+        We would like to explain the philosophy behind this project with a short letter. <br /><br />
+        Going into our senior year of high school, we were discontent with how we'd spent our three of four years. 
+        We'd made good friends and memories but near the end of it we realized the importance of doing what we enjoy, 
+        not what we think pads a resume. Together we pitched ideas and with strong success, we found our ideals for a content life. 
+        <br />
         Time passed and we decided to create a project to share it. 
         Together we constructed a sort of “to-do list” of tasks which we find best satisfies the requirements for a prosperous well-being. 
-        10clicks.org is a digital embodiment of what we think a human needs to be happy, or at least content.
+        10clicks.org is a digital embodiment of what we think every human needs to feel fulfilled, or at least happy.
         <br /><br />
         Best regards,
-        Benjamin DeWeese van Schooneveld, Oleksandr Gorpynich
+        <br />
+        Benjamin DeWeese van Schooneveld, Oleksandr Gorpynich.
         <br /><br />
         Below are the listed requisites for happiness.
       </p>
