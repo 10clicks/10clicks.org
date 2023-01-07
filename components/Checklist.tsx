@@ -1,5 +1,5 @@
 import ChecklistItem from "../islands/ChecklistItem.tsx"
-import DailyUseChart from "./DailyUseChart.tsx"
+
 const data = [
   {
     name: "Sleep",
@@ -52,7 +52,7 @@ export default function Checklist() {
           {
             color: "#888888"
           }
-        } className="font-normal text-base">List is loosely ordered but should attempt to be followed in sequence. </p>
+        } className="font-light text-base">List is loosely ordered but should attempt to be followed in sequence. </p>
       </div>
       <div className="flex flex-col gap-4 mt-4 items-center">
         {data.map((item) => {
@@ -61,7 +61,6 @@ export default function Checklist() {
           )
         })}
       </div>
-      <DailyUseChart />
     </div>
   )
 }

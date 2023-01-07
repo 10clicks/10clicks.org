@@ -1,4 +1,4 @@
-export default function Philosophy() {
+export default function PhilosophyDescription() {
   return (
     <div className="lg:w-2/3 p-4 mx-auto mt-12">
       <div>

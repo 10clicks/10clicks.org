@@ -1,39 +1,62 @@
-import { useRef, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 interface ChecklistItemProps {
   name: string;
   description: string;
 }
 export default function ChecklistItem(props: ChecklistItemProps) {
   const checklistButton = useRef<HTMLAnchorElement>(null);
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(localStorage.getItem(props.name) === "true");
+
+  useEffect(() => {
+    localStorage.setItem(props.name, isClicked.toString());
+  }, [isClicked]);
+
   function turnOnChecklistItem() {
     // return the scale of the button back to 1
     if (!checklistButton.current) return;
     if (!isClicked) {
       setIsClicked(true);
-      checklistButton.current.style.transform = "scale(1)";
-      // shake the button
-      checklistButton.current.animate([
-        { transform: "translateX(0px)", rotate: "0deg" },
-        { transform: "translateX(3px)", rotate: "0.2deg" },
-        { transform: "translateX(-3px)", rotate: "-0.2deg" },
-        { transform: "translateX(3px)", rotate: "0.2deg" },
-        { transform: "translateX(-3px)", rotate: "-0.2deg" },
-        { transform: "translateX(3px)", rotate: "0.2deg" },
-        { transform: "translateX(-3px)", rotate: "-0.2deg" },
-        { transform: "translateX(0px)", rotate: "0deg" },
-      ], {
-        duration: 500,
-        iterations: 1
-      });
-      // make the div inside the button green
-      (checklistButton.current.children[0] as HTMLDivElement).style.background = "#26A65B";
+      makeItemGreen();
     } else {
       setIsClicked(false);
-      checklistButton.current.style.transform = "";
-      (checklistButton.current.children[0] as HTMLDivElement).style.background = "#FFFFFF";
+      makeItemRed();
     }
   }
+
+  function makeItemGreen() {
+    if (!checklistButton.current) return;
+    checklistButton.current.style.transform = "scale(1)";
+    // shake the button
+    checklistButton.current.animate([
+      { transform: "translateX(0px)", rotate: "0deg" },
+      { transform: "translateX(3px)", rotate: "0.2deg" },
+      { transform: "translateX(-3px)", rotate: "-0.2deg" },
+      { transform: "translateX(3px)", rotate: "0.2deg" },
+      { transform: "translateX(-3px)", rotate: "-0.2deg" },
+      { transform: "translateX(3px)", rotate: "0.2deg" },
+      { transform: "translateX(-3px)", rotate: "-0.2deg" },
+      { transform: "translateX(0px)", rotate: "0deg" },
+    ], {
+      duration: 500,
+      iterations: 1
+    });
+    // make the div inside the button green
+    (checklistButton.current.children[0] as HTMLDivElement).style.background = "#26A65B";
+  }
+
+  function makeItemRed() {
+    if (!checklistButton.current) return;
+    checklistButton.current.style.transform = "";
+    (checklistButton.current.children[0] as HTMLDivElement).style.background = "#FFFFFF";
+  }
+
+  useEffect(() => {
+    if (isClicked) {
+      makeItemGreen();
+    } else {
+      makeItemRed();
+    }
+  }, []);
 
   return (
     <a className={"w-full lg:h-8 h-20 rounded-l-full flex flex-row items-center gap-3" + " checklistButton"} style={
