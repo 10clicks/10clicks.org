@@ -17,6 +17,7 @@ export default function Header() {
           <img src="/10c_logo.png" alt="logo" class="rounded h-12 w-12"/>
           <h1 className="text-4xl font-semibold">10clicks.org</h1>
         </a>
+        <a href="/checklist">Checklist</a>
         <a href="/philosophy">Philosophy</a>
         <a href="/developers">Developers</a>
       </div>
