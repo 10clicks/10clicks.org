@@ -1,25 +1,25 @@
-import { useEffect, useRef, useState } from "preact/hooks";
+import { StateUpdater, useEffect, useRef, useState } from "preact/hooks";
+import useLocalStorage from "../components/hooks/useLocalStorage.ts";
+
 interface ChecklistItemProps {
   name: string;
   description: string;
+  setNumberClicked: StateUpdater<number>;
 }
 export default function ChecklistItem(props: ChecklistItemProps) {
   const checklistButton = useRef<HTMLAnchorElement>(null);
-  const [isClicked, setIsClicked] = useState(localStorage.getItem(props.name) === "true");
-
-  useEffect(() => {
-    localStorage.setItem(props.name, isClicked.toString());
-  }, [isClicked]);
-
+  const {storedValue: isClicked, setStoredValue:setIsClicked} = useLocalStorage(false, props.name);
   function turnOnChecklistItem() {
     // return the scale of the button back to 1
     if (!checklistButton.current) return;
     if (!isClicked) {
       setIsClicked(true);
       makeItemGreen();
+      props.setNumberClicked(e => e + 1);
     } else {
       setIsClicked(false);
       makeItemRed();
+      props.setNumberClicked(e => e - 1);
     }
   }
 
@@ -53,6 +53,7 @@ export default function ChecklistItem(props: ChecklistItemProps) {
   useEffect(() => {
     if (isClicked) {
       makeItemGreen();
+      props.setNumberClicked(e => e + 1);
     } else {
       makeItemRed();
     }

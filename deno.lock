@@ -1,6 +1,7 @@
 {
   "version": "2",
   "remote": {
+    "https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js": "b97d6ce7f439813945b5a3a83a5429d5aee1131b09c371c15db2a0f60986ed3f",
     "https://deno.land/std@0.140.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
     "https://deno.land/std@0.140.0/_util/os.ts": "3b4c6e27febd119d36a416d7a97bd3b0251b77c88942c8f16ee5953ea13e2e49",
     "https://deno.land/std@0.140.0/fs/_util.ts": "0fb24eb4bfebc2c194fb1afdb42b9c3dda12e368f43e8f2321f84fc77d42cb0f",
@@ -117,6 +118,7 @@
     "https://deno.land/x/ts_morph@16.0.0/ts_morph.d.ts": "38668b0e3780282a56a805425494490b0045d1928bd040c47a94095749dab8c3",
     "https://deno.land/x/ts_morph@16.0.0/ts_morph.js": "9fc0f3d6a3997c2df023fabc4e529d2117d214ffd4fd04247ca2f56c4e9cd470",
     "https://esm.sh/*preact-render-to-string@5.2.4": "bc2c731f186efa0c21b57b43789d6c107e0b8ef320f472954ba6fedfb2943372",
+    "https://esm.sh/canvas-confetti@1.6.0": "3a8144033751b8dafe129cc82137165d07a4c604abbe8ddbb100766c5b7a7566",
     "https://esm.sh/d3@7.6.1?dev": "820c10cab78c02c4ba385c3e3e1a81c262679778059e506dfef59406ac9e1846",
     "https://esm.sh/preact@10.11.0": "e888b244446037c56f1881173fb51d1f5fa7aae5599e6c5154619346a6a5094e",
     "https://esm.sh/preact@10.11.0/hooks": "2b8ec155eb8b87501663f074acff1d55a9114fa7d88f0b39da06c940af1ff736",
@@ -126,6 +128,7 @@
     "https://esm.sh/stable/preact@10.11.0/deno/preact.js": "071b515099e5dff2fe56768be62644e32fab702b194171357ccc4d7d1210144a",
     "https://esm.sh/twind@0.16.17": "0e9a7188118ae845d1198d0b141946fa869f7c9cd7ba19ebec58f0a3839eb009",
     "https://esm.sh/twind@0.16.17/sheets": "343c2db26c435f148b7aed28b2c29d7bad189a279e4dab6e545ca51021565983",
+    "https://esm.sh/v102/@types/canvas-confetti@1.6.0/index.d.ts": "48a59ff73b25b2309406f942bfa73f9099aa0a76a73537197efb0024bc5f62a4",
     "https://esm.sh/v102/@types/d3-array@3.0.3/index.d.ts": "1dcf064246c65c6420e5392fdc3da2164f353d87e566fd48c0ecf26df3803cad",
     "https://esm.sh/v102/@types/d3-axis@3.0.1/index.d.ts": "ac0a9ec641f6f961df9e41e92065f09344df3413a64212356729f104d60e6ba4",
     "https://esm.sh/v102/@types/d3-brush@3.0.1/index.d.ts": "d576e7b2b35250672ff89392f41ce1581a3965d19dc3062c4e380bf66df197a3",
@@ -158,6 +161,7 @@
     "https://esm.sh/v102/@types/d3-zoom@3.0.1/index.d.ts": "bb1cbdf3bfb56c0bd991b9b5b3bb634ee04ab28f405bde39c7392d6527353113",
     "https://esm.sh/v102/@types/d3@7.4.0/index.d.ts": "e179e0406e489fe702f415af4545560bf4a7c29cb4e862cc5da95daee92934c7",
     "https://esm.sh/v102/@types/geojson@7946.0.10/index.d.ts": "a3b6c93a9838b8c94c6998e85646d6f2d07c20ecfe1e235dba62158b29451391",
+    "https://esm.sh/v102/canvas-confetti@1.6.0/deno/canvas-confetti.js": "6c09a5044cdc73c631bd110a7aa7ba00fa9b6972a5f2d2b35913492e2606d330",
     "https://esm.sh/v102/d3-array@3.2.1/deno/d3-array.development.js": "b211b03abab33a85d463622fbba937da4454dc1fcfe64f28871f50959d588c53",
     "https://esm.sh/v102/d3-axis@3.0.0/deno/d3-axis.development.js": "241d951f51e4a2d3f0bc2b673a081190566e3722c3520c5341d3ed4ca22bc7fb",
     "https://esm.sh/v102/d3-brush@3.0.0/deno/d3-brush.development.js": "1786bab96ad53c5e5f9e771513d2b98fdedef5e66a777396f108f034cc44107d",
@@ -208,5 +212,14 @@
     "https://esm.sh/v99/preact@10.11.0/jsx-runtime/src/index.d.ts": "e153460ed2b3fe2ad8b93696ecd48fbf73cd628b0b0ea6692b71804a3af69dfd",
     "https://esm.sh/v99/preact@10.11.0/src/index.d.ts": "1a5c331227be54be6515b0c92a469d352834fa413963ae84a39a05a3177111f6",
     "https://esm.sh/v99/preact@10.11.0/src/jsx.d.ts": "c423715fd7992b2e1446fea11d2d04e8adbd66c1edca1ce5e85f90e0d26a2eb2"
+  },
+  "npm": {
+    "specifiers": { "canvas-confetti": "canvas-confetti@1.6.0" },
+    "packages": {
+      "canvas-confetti@1.6.0": {
+        "integrity": "sha512-ej+w/m8Jzpv9Z7W7uJZer14Ke8P2ogsjg4ZMGIuq4iqUOqY2Jq8BNW42iGmNfRwREaaEfFIczLuZZiEVSYNHAA==",
+        "dependencies": {}
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
-import ChecklistItem from "../islands/ChecklistItem.tsx"
+import ChecklistItem from "./ChecklistItem.tsx"
+import useConfettiCheck from "../components/hooks/useConfettiCheck.ts";
 
 const data = [
   {
@@ -44,6 +45,7 @@ const data = [
 ]
 
 export default function ChecklistDescription() {
+  const {numberClicked, setNumberClicked} = useConfettiCheck();
   return (
     <div className="lg:w-2/3 p-4 mx-auto mt-12">
       <div className="flex lg:flex-row flex-col gap-4 items-center">
@@ -57,7 +59,7 @@ export default function ChecklistDescription() {
       <div className="flex flex-col gap-4 mt-4 items-center">
         {data.map((item) => {
           return (
-            <ChecklistItem name={item.name} description={item.description} />
+            <ChecklistItem name={item.name} description={item.description} setNumberClicked={setNumberClicked} />
           )
         })}
       </div>

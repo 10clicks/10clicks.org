@@ -8,8 +8,8 @@ import * as $1 from "./routes/checklist.tsx";
 import * as $2 from "./routes/developers.tsx";
 import * as $3 from "./routes/index.tsx";
 import * as $4 from "./routes/philosophy.tsx";
-import * as $$0 from "./islands/ChecklistItem.tsx";
-import * as $$1 from "./islands/Counter.tsx";
+import * as $$0 from "./islands/Checklist.tsx";
+import * as $$1 from "./islands/ChecklistItem.tsx";
 
 const manifest = {
   routes: {
@@ -20,8 +20,8 @@ const manifest = {
     "./routes/philosophy.tsx": $4,
   },
   islands: {
-    "./islands/ChecklistItem.tsx": $$0,
-    "./islands/Counter.tsx": $$1,
+    "./islands/Checklist.tsx": $$0,
+    "./islands/ChecklistItem.tsx": $$1,
   },
   baseUrl: import.meta.url,
   config,

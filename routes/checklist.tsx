@@ -1,6 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import Header from "../components/Header.tsx";
-import ChecklistDescription from "../components/Checklist.tsx";
+import ChecklistDescription from "../islands/Checklist.tsx";
 export default function Checklist() {
   return (
     <>
