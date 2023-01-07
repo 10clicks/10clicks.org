@@ -72,7 +72,7 @@ export default function ChecklistItem(props: ChecklistItemProps) {
       ref={checklistButton}
     >
       <div className="font-normal bg-white rounded-full lg:h-8 lg:w-8 h-20 w-20 flex-shrink-0"/>
-      <h2 className="font-light w-16 flex-shrink-0 text-left">{props.name}</h2>
+      <h2 className="font-normal w-16 flex-shrink-0 text-left">{props.name}</h2>
       <p style={
         {
           color: "#888888"
