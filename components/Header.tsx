@@ -5,7 +5,7 @@ export default function Header() {
     <div className="w-screen h-14 flex-shrink-0" style={
       {
         backgroundImage: "#FFFFFF",
-        boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.25)"
+        boxShadow: "0px 1px 1px rgba(0, 0, 0, 0.6)"
       }
     }>
       <div style={
