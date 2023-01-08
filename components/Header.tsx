@@ -4,8 +4,8 @@ export default function Header() {
   return (
     <div className="w-screen h-14 flex-shrink-0" style={
       {
-        background: "#26A65B",
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
+        background: "#EEEEEE",
+        boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.25)"
       }
     }>
       <div style={
@@ -17,6 +17,7 @@ export default function Header() {
           <img src="/10c_logo.png" alt="logo" class="rounded h-8 w-8"/>
           <h1 className="text-3xl font-semibold">10clicks.org</h1>
         </a>
+        <a href="/checklist">Checklist</a>
         <a href="/philosophy">Philosophy</a>
         <a href="/developers">Developers</a>
       </div>

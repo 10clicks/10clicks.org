@@ -38,7 +38,7 @@ export default function ChecklistItem(props: ChecklistItemProps) {
       iterations: 1
     });
     // make the div inside the button green
-    (checklistButton.current.children[0] as HTMLDivElement).style.background = "#26A65B";
+    (checklistButton.current.children[0] as HTMLDivElement).style.background = "#1DB954";
   }
 
   function makeItemRed() {
