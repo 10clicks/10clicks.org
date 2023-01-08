@@ -47,16 +47,16 @@ const data = [
 export default function ChecklistDescription() {
   const {numberClicked, setNumberClicked} = useConfettiCheck();
   return (
-    <div className="lg:w-2/3 p-4 mx-auto mt-12">
+    <div className="lg:w-2/3 p-4 mx-auto mt-8 h-full flex flex-col h-full">
       <div className="flex lg:flex-row flex-col gap-4 items-center">
         <h1 className="font-normal text-2xl">Checklist</h1>
         <p style={
           {
-            color: "#888888"
+            color: "#555555"
           }
         } className="font-normal text-base">List is loosely ordered but should attempt to be followed in sequence. </p>
       </div>
-      <div className="flex flex-col gap-4 mt-4 items-center">
+      <div className="flex flex-col gap-4 mt-4 items-center h-full">
         {data.map((item) => {
           return (
             <ChecklistItem name={item.name} description={item.description} setNumberClicked={setNumberClicked} />

@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/10c_favicon_48x48.ico" />
         <title>10clicks.org</title>
       </Head>
-      <div>
+      <div className="h-screen flex flex-col">
         <Header />
         <Checklist />
       </div>

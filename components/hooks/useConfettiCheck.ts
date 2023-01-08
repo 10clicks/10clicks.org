@@ -5,11 +5,11 @@ export default function useConfettiCheck() {
   const [numberClicked, setNumberClicked] = useState(0);
   useEffect(() => {
     if (numberClicked === 10) {
-      // show big confetti
+      // show big confetti with multiple bursts
       confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
+        particleCount: 300,
+        spread: 100,
+        origin: { y: 0.6}
       });
     }
   }, [numberClicked]);

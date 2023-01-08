@@ -29,15 +29,12 @@ export default function ChecklistItem(props: ChecklistItemProps) {
     // shake the button
     checklistButton.current.animate([
       { transform: "translateX(0px)", rotate: "0deg" },
-      { transform: "translateX(3px)", rotate: "0.2deg" },
-      { transform: "translateX(-3px)", rotate: "-0.2deg" },
-      { transform: "translateX(3px)", rotate: "0.2deg" },
-      { transform: "translateX(-3px)", rotate: "-0.2deg" },
-      { transform: "translateX(3px)", rotate: "0.2deg" },
-      { transform: "translateX(-3px)", rotate: "-0.2deg" },
-      { transform: "translateX(0px)", rotate: "0deg" },
+      { transform: "translateX(3px)", rotate: "0.4deg" },
+      { transform: "translateX(-3px)", rotate: "-0.15deg" },
+      { transform: "translateX(3px)", rotate: "0.08deg" },
+      { transform: "translateX(-3px)", rotate: "-0deg" },
     ], {
-      duration: 500,
+      duration: 300,
       iterations: 1
     });
     // make the div inside the button green
@@ -75,7 +72,7 @@ export default function ChecklistItem(props: ChecklistItemProps) {
       <h2 className="font-light w-16 flex-shrink-0 text-left">{props.name}</h2>
       <p style={
         {
-          color: "#888888"
+          color: "#555555"
         }
       } className="font-normal lg:text-base text-sm">{props.description}</p>
     </a>
