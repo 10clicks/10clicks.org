@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <div className="w-screen h-14 flex-shrink-0" style={
       {
-        background: "#EEEEEE",
+        backgroundImage: "#FFFFFF",
         boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.25)"
       }
     }>

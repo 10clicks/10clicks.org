@@ -5,6 +5,7 @@ interface ChecklistItemProps {
   name: string;
   description: string;
   setNumberClicked: StateUpdater<number>;
+  index: number;
 }
 export default function ChecklistItem(props: ChecklistItemProps) {
   const checklistButton = useRef<HTMLAnchorElement>(null);

@@ -57,9 +57,9 @@ export default function ChecklistDescription() {
         } className="font-normal text-base">List is loosely ordered but should attempt to be followed in sequence. </p>
       </div>
       <div className="flex flex-col gap-4 mt-4 items-center h-full">
-        {data.map((item) => {
+        {data.map((item, i) => {
           return (
-            <ChecklistItem name={item.name} description={item.description} setNumberClicked={setNumberClicked} />
+            <ChecklistItem name={item.name} description={item.description} setNumberClicked={setNumberClicked} index={i} />
           )
         })}
       </div>
