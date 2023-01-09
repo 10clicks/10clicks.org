@@ -59,11 +59,12 @@ export default function Header() {
             }
           }/>
         </button>
-        <div className='w-1/2 h-screen fixed top-0 right-0 z-50 flex flex-col gap-4 items-center text-black' style={
+        <div className='w-1/2 h-screen fixed top-0 right-0 z-50 flex flex-col gap-4 items-center text-black ' style={
           {
             backgroundColor: "white",
             transition: "transform 0.2s ease-in",
-            boxShadow: "-1px 2px 0px rgba(0, 0, 0, 0.6)"
+            boxShadow: "-1px 2px 0px rgba(0, 0, 0, 0.6)",
+            transform:"translateX(100%)"
           }
         } ref={ref}>
           <button className='text-4xl self-end border border-black rounded h-10 w-10 leading-none p-0 m-2 font-light' onClick={toggleBurgerMenu}>
