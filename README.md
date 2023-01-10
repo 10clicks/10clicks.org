@@ -18,7 +18,7 @@ The site is built on the Deno framework and deployed through Deno Deploy. Our co
 
 ## Help
 
-* It is possible there may be an error with the deno.lock file. If this happens, delete it, attempt to run again and a new lock file should repopulate your repository folder.
+* It is possible there may be an error with the deno.lock file. If this happens, delete it, run again and a new lock file should populate inside your repository folder.
 
 ## Authors
 
