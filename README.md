@@ -1,6 +1,6 @@
 # 10clicks.org
 
-10clicks.org is an attempt by Benjamin DeWeese van Schooneveld and Oleksandr Gorpynich to translate the requirements for happiness into simplified tasks.
+10clicks.org is an attempt by Benjamin DeWeese van Schooneveld and Oleksandr Gorpynich to translate percieved requirements for happiness into simplified tasks.
 
 ## Description
 
@@ -34,7 +34,7 @@ GitHub: [@olexg](https://github.com/OlexG)
 
 ## Version History
 
-* January 10, 2023
+* January --, 2023
     * Version 1 Complete
 * December 22, 2022
     * Initial Commit
