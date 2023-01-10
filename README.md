@@ -22,14 +22,14 @@ The site is built on the Deno framework and deployed through Deno Deploy. Our co
 
 ## Authors
 
-Benjamin DeWeese van Schooneveld
-Website: [bdeweesevans.com](https://bdeweesevans.com)
-LinkedIn: [@bdeweesevans](https://linkedin.com/in/bdeweesevans)
+Benjamin DeWeese van Schooneveld</br>
+Website: [bdeweesevans.com](https://bdeweesevans.com)</br>
+LinkedIn: [@bdeweesevans](https://linkedin.com/in/bdeweesevans)</br>
 GitHub: [@bdeweesevans](https://github.com/bdeweesevans)
 
-Oleksandr Gorpynich
-Website: [imoleks.com](https://imoleks.com/)
-LinkedIn: [@oleksandr gorpynich](https://linkedin.com/in/oleksandr-gorpynich-91b4501a6/)
+Oleksandr Gorpynich</br>
+Website: [imoleks.com](https://imoleks.com/)</br>
+LinkedIn: [@oleksandr gorpynich](https://linkedin.com/in/oleksandr-gorpynich-91b4501a6/)</br>
 GitHub: [@olexg](https://github.com/OlexG)
 
 ## Version History
