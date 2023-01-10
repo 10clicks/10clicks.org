@@ -4,7 +4,7 @@
 
 ## Description
 
-The site is built on the Deno framework and deployed through Deno Deploy. Our codebase is hosted here, on github.
+The site is built on the Deno framework and deployed through Deno Deploy. Our codebase is hosted here, on GitHub.
 
 ## Getting Started
 
