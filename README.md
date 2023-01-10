@@ -14,9 +14,7 @@ The site is built on the Deno framework and deployed through Deno Deploy. Our co
 
 ### Executing program
 
-* ```
-$ deno task start
-```
+* ```$ deno task start```
 
 ## Help
 
