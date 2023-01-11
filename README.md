@@ -29,7 +29,7 @@ GitHub: [@bdeweesevans](https://github.com/bdeweesevans)
 
 Oleksandr Gorpynich</br>
 Website: [imoleks.com](https://imoleks.com/)</br>
-LinkedIn: [@oleksandr gorpynich](https://linkedin.com/in/oleksandr-gorpynich-91b4501a6/)</br>
+LinkedIn: [@oleksandrgorpynich](https://linkedin.com/in/oleksandr-gorpynich-91b4501a6/)</br>
 GitHub: [@olexg](https://github.com/OlexG)
 
 ## Version History
