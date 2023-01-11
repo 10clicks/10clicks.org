@@ -1,4 +1,4 @@
-# 10clicks.org
+# [10clicks.org](https://www.10clicks.org/)
 
 10clicks.org is an attempt by Benjamin DeWeese van Schooneveld and Oleksandr Gorpynich to translate percieved requirements for happiness into simplified tasks.
 
