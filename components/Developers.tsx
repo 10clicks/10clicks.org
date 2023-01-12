@@ -8,12 +8,34 @@ export default function DevelopersDescription() {
       <p className="font-normal" style={{
         color: "#888888"
       }}>
-        Benjamin DeWeese van Schooneveld - Oleksandr Gorpynich
+        Benjamin DeWeese van Schooneveld
+        <br />
+        Student at the University of Oregon.
+        <br />
+        Strong interests in Web Scraping, Cyber Security, Python Scripting, Product Development and Delivery.
+        <br />
+        <i>Links:</i>
+        <br />
+        •&nbsp;&nbsp;&nbsp;Personal Website: <u><a href="https://www.bdeweesevans.com">www.bdeweesevans.com</a></u>
+        <br />
+        •&nbsp;&nbsp;&nbsp;LinkedIn: <u><a href="https://www.linkedin.com/in/bdeweesevans">@bdeweesevans</a></u>
+        <br />
+        •&nbsp;&nbsp;&nbsp;GitHub: <u><a href="https://www.github.com/bdeweesevans">@bdeweesevans</a></u>
         <br /><br />
-        Students at University of Oregon and Cal Poly SLO, respectively.
-        Both are studying to complete a Bachelors of Science in Computer Science by 2026.
+        Oleksandr Gorpynich
+        <br />
+        Student at Cal Poly San Louis Obispo.
+        <br />
+        Strong interests in Web Development, Competitive Programming, Cyber Security and Machine Learning.
+        <br />
+        <i>Links:</i>
+        <br />
+        •&nbsp;&nbsp;&nbsp;Personal Website: <u><a href="https://www.imoleks.com">www.imoleks.com</a></u>
+        <br />
+        •&nbsp;&nbsp;&nbsp;LinkedIn: <u><a href="https://www.linkedin.com/in/oleksandr-gorpynich-91b4501a6/">@OleksandrGorpynich</a></u>
+        <br />
+        •&nbsp;&nbsp;&nbsp;GitHub: <u><a href="https://www.github.com/OlexG">@OlexG</a></u>
         <br /><br />
-        Page under construction.
       </p>
       </div>
     </div>
