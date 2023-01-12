@@ -34,7 +34,7 @@ GitHub: [@olexg](https://github.com/OlexG)
 
 ## Version History
 
-* January --, 2023
-    * Version 1 Complete
+* January 12, 2023
+    * Version 1.0 Complete
 * December 22, 2022
     * Initial Commit
