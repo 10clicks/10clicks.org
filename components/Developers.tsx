@@ -16,11 +16,11 @@ export default function DevelopersDescription() {
         <br />
         <i>Links:</i>
         <br />
-        •&nbsp;&nbsp;&nbsp;Personal Website: <u><a href="https://www.bdeweesevans.com">www.bdeweesevans.com</a></u>
+        •&nbsp;&nbsp;&nbsp;Personal Website: <u><a href="https://www.bdeweesevans.com" target="_blank" rel="noopener noreferrer">www.bdeweesevans.com</a></u>
         <br />
-        •&nbsp;&nbsp;&nbsp;LinkedIn: <u><a href="https://www.linkedin.com/in/bdeweesevans">@bdeweesevans</a></u>
+        •&nbsp;&nbsp;&nbsp;LinkedIn: <u><a href="https://www.linkedin.com/in/bdeweesevans/" target="_blank" rel="noopener noreferrer">@bdeweesevans</a></u>
         <br />
-        •&nbsp;&nbsp;&nbsp;GitHub: <u><a href="https://www.github.com/bdeweesevans">@bdeweesevans</a></u>
+        •&nbsp;&nbsp;&nbsp;GitHub: <u><a href="https://www.github.com/bdeweesevans" target="_blank" rel="noopener noreferrer">@bdeweesevans</a></u>
         <br /><br />
         Oleksandr Gorpynich
         <br />
@@ -30,11 +30,11 @@ export default function DevelopersDescription() {
         <br />
         <i>Links:</i>
         <br />
-        •&nbsp;&nbsp;&nbsp;Personal Website: <u><a href="https://www.imoleks.com">www.imoleks.com</a></u>
+        •&nbsp;&nbsp;&nbsp;Personal Website: <u><a href="https://www.imoleks.com" target="_blank" rel="noopener noreferrer">www.imoleks.com</a></u>
         <br />
-        •&nbsp;&nbsp;&nbsp;LinkedIn: <u><a href="https://www.linkedin.com/in/oleksandr-gorpynich-91b4501a6/">@OleksandrGorpynich</a></u>
+        •&nbsp;&nbsp;&nbsp;LinkedIn: <u><a href="https://www.linkedin.com/in/oleksandr-gorpynich-91b4501a6/" target="_blank" rel="noopener noreferrer">@OleksandrGorpynich</a></u>
         <br />
-        •&nbsp;&nbsp;&nbsp;GitHub: <u><a href="https://www.github.com/OlexG">@OlexG</a></u>
+        •&nbsp;&nbsp;&nbsp;GitHub: <u><a href="https://www.github.com/OlexG" target="_blank" rel="noopener noreferrer">@OlexG</a></u>
         <br /><br />
       </p>
       </div>
