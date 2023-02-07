@@ -14,9 +14,7 @@ export default function Header() {
       if (!ref.current) return;
       ref.current.style.transform = "translateX(0px)";
     } else {
-      console.log("here")
       if (!ref.current) return;
-      console.log("yes");
       ref.current.style.transform = "translateX(100%)";
     }
   }, [isMenuOpen]);

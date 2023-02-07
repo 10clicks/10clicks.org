@@ -1,5 +1,3 @@
-import { Chart } from "freshcharts";
-
 /*export default function DailyUseChart() {
   return (
     <div>
@@ -18,7 +16,6 @@ import { Chart } from "freshcharts";
             "Hobby",
             "Goal",
           ],
-
         }}
       />
     </div>
