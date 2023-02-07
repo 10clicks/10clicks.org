@@ -5,7 +5,6 @@ import { ConnInfo, serve } from "https://deno.land/std/http/server.ts";
 const ga = createReporter({ id: "G-ZJ2X1Z471N" });
 
 serve((req: Request, connInfo: ConnInfo) => {
-  console.log("I am here")
   let err;
   let res;
   const start = performance.now();
