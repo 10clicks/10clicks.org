@@ -34,7 +34,9 @@ GitHub: [@olexg](https://github.com/OlexG)
 
 ## Version History
 
+* February 6, 2023
+    * Version 1.1 (Google Analytics Implemented
 * January 12, 2023
-    * Version 1.0 Complete
+    * Version 1.0 (Base Site Complete)
 * December 22, 2022
-    * Initial Commit
+    * Initial Commit (N/A)
