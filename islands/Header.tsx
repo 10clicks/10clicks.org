@@ -37,6 +37,7 @@ export default function Header() {
         </a>
         <div className="flex-row items-center gap-4 md:flex hidden">
           <a href="/checklist">Checklist</a>
+          <a href="/profile">Profile</a>
           <a href="/philosophy">Philosophy</a>
           <a href="/developers">Developers</a>
         </div>
@@ -69,6 +70,7 @@ export default function Header() {
             x
           </button>
           <a href="/checklist">Checklist</a>
+          <a href="/profile">Profile</a>
           <a href="/philosophy">Philosophy</a>
           <a href="/developers">Developers</a>
         </div>

@@ -1,6 +1,5 @@
 import ChecklistItem from "./ChecklistItem.tsx"
 import useConfettiCheck from "../components/hooks/useConfettiCheck.ts";
-
 const data = [
   {
     name: "Sleep",
