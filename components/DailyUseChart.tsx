@@ -5,25 +5,19 @@ export default function Home() {
   return (
     <div class="p-4 mx-auto max-w-screen-md">
       <Chart
-        type="line"
+        type="bar"
         options={{
           devicePixelRatio: 1,
           scales: { },
         }}
         data={{
-          labels: ["1", "2", "3"],
+          labels: ["Sleep", "Read", "Workout", "Journal", "Dulce", "Food", "Socialize", "Clean", "Hobby", "Goal"],
           datasets: [{
-            label: "Sessions",
-            data: [123, 234, 234],
-            borderColor: ChartColors.Red,
-            backgroundColor: transparentize(ChartColors.Red, 0.5),
-            borderWidth: 1,
-          }, {
-            label: "Users",
-            data: [346, 233, 123],
-            borderColor: ChartColors.Blue,
-            backgroundColor: transparentize(ChartColors.Blue, 0.5),
-            borderWidth: 1,
+            label: "Checklist Items Vs. Times Completed Today (Fake Data)",
+            data: [10, 12, 8, 9, 10, 9, 6, 13, 8, 12],
+            borderColor: '#323233',
+            backgroundColor: '#1db855',
+            borderWidth: 1.5,
           }],
         }}
       />
