@@ -3,31 +3,35 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import config from "./deno.json" assert { type: "json" };
-import * as $0 from "./routes/_middleware.ts";
-import * as $1 from "./routes/api/joke.ts";
-import * as $2 from "./routes/checklist.tsx";
-import * as $3 from "./routes/developers.tsx";
-import * as $4 from "./routes/index.tsx";
-import * as $5 from "./routes/philosophy.tsx";
-import * as $6 from "./routes/profile.tsx";
+import * as $0 from "./routes/DailyUseChart.tsx";
+import * as $1 from "./routes/_middleware.ts";
+import * as $2 from "./routes/api/joke.ts";
+import * as $3 from "./routes/checklist.tsx";
+import * as $4 from "./routes/developers.tsx";
+import * as $5 from "./routes/index.tsx";
+import * as $6 from "./routes/philosophy.tsx";
+import * as $7 from "./routes/profile.tsx";
 import * as $$0 from "./islands/Checklist.tsx";
 import * as $$1 from "./islands/ChecklistItem.tsx";
 import * as $$2 from "./islands/Header.tsx";
+import * as $$3 from "./islands/Profile.tsx";
 
 const manifest = {
   routes: {
-    "./routes/_middleware.ts": $0,
-    "./routes/api/joke.ts": $1,
-    "./routes/checklist.tsx": $2,
-    "./routes/developers.tsx": $3,
-    "./routes/index.tsx": $4,
-    "./routes/philosophy.tsx": $5,
-    "./routes/profile.tsx": $6,
+    "./routes/DailyUseChart.tsx": $0,
+    "./routes/_middleware.ts": $1,
+    "./routes/api/joke.ts": $2,
+    "./routes/checklist.tsx": $3,
+    "./routes/developers.tsx": $4,
+    "./routes/index.tsx": $5,
+    "./routes/philosophy.tsx": $6,
+    "./routes/profile.tsx": $7,
   },
   islands: {
     "./islands/Checklist.tsx": $$0,
     "./islands/ChecklistItem.tsx": $$1,
     "./islands/Header.tsx": $$2,
+    "./islands/Profile.tsx": $$3,
   },
   baseUrl: import.meta.url,
   config,

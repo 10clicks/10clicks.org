@@ -10,10 +10,13 @@ export default function Streak(
       <p>
         Streak: {props.total}
       </p>
-      <p className="pt-1 text-sm">
+      <p className="text-sm text-gray-600 pb-2">
+        A day is considered completed if you complete all 10 clicks
+      </p>
+      <p className="pt-1 text-sm pb-2">
         Sun - - - - - - - - --&gt; Sat
       </p>
-      <div className="rounded border border-dashed border-black flex flex-row w-40 justify-between items-center p-2">
+      <div className="border border-dashed border-black flex flex-row w-40 justify-between items-center p-2">
         {
           props.daily.map((day, index) => {
             return (
