@@ -36,9 +36,9 @@ export const handler: Handlers = {
           }
         },
         data: {
-          labels: ["Sleep", "Read", "Workout", "Journal", "Dulce", "Food", "Socialize", "Clean", "Hobby", "Goal"],
+          labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
           datasets: [{
-            label: "Checklist Items Vs. Times Completed Today",
+            label: "Total Clicks Over the Past 7 Days",
             data: parsedData,
             borderColor: '#323233',
             backgroundColor: '#1db855',
