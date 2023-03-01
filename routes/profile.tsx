@@ -1,5 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import Header from "../islands/Header.tsx";
+import Footer from "../components/Footer.tsx";
 import Profile from "../islands/Profile.tsx";
 export default function Developers() {
   return (
@@ -12,6 +13,7 @@ export default function Developers() {
       <div className="flex flex-col min-h-screen">
         <Header/> 
         <Profile/>
+        <Footer/>
       </div>
     </>
   )
