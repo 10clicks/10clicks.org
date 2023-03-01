@@ -46,7 +46,7 @@ const data = [
 export default function ChecklistDescription() {
   const {numberClicked, setNumberClicked} = useConfettiCheck();
   return (
-    <div className="lg:w-2/3 p-4 mx-auto mt-8 h-full flex flex-col h-full">
+    <div className="lg:w-2/3 p-4 mx-auto mt-8 h-full flex flex-col h-full flex-grow">
       <div className="flex lg:flex-row flex-col gap-4 items-center">
         <h1 className="font-normal text-2xl">Checklist</h1>
         <p style={

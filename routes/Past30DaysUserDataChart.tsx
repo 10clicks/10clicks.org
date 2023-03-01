@@ -12,39 +12,48 @@ export const handler: Handlers = {
     try {
       // parse the data query parameter into an array of numbers
       const parsedData = data.split(",").map((x) => parseInt(x, 10));
-
       return renderChart({
-        type: "bar",
+        type: "line",
+        // set tick font size
+
         options: {
-          scales: { 
+          scales: {
             y: {
               ticks: {
                 font: {
-                  size: 15
+                  size: 30
                 }
               }
             },
+            x: {
+              ticks: {
+                font: {
+                  size: 20
+                }
+              }
+            }
           },
           plugins: {
             legend: {
               labels: {
                 font: {
-                  size: 15
+                  size: 30
                 }
               }
             }
           }
         },
         data: {
-          labels: ["Sleep", "Read", "Workout", "Journal", "Dulce", "Food", "Socialize", "Clean", "Hobby", "Goal"],
+          labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
           datasets: [{
-            label: "Checklist Items Vs. Times Completed Today",
+            label: "Your Total Clicks per Day",
             data: parsedData,
             borderColor: '#323233',
             backgroundColor: '#1db855',
             borderWidth: 1.5,
           }]
         },
+        height: 600,
       })
     } catch (e) {
       return new Response("Unable to process request", { status: 400 });
