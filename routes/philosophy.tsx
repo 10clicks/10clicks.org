@@ -1,6 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import Header from "../islands/Header.tsx";
 import PhilosophyDescription from "../components/Philosophy.tsx";
+
 export default function Philosophy() {
   return (
     <>

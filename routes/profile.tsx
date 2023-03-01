@@ -1,6 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import Header from "../islands/Header.tsx";
 import Profile from "../islands/Profile.tsx";
+
 export default function Developers() {
   return (
     <>
