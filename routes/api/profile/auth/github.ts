@@ -11,7 +11,7 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
     body.set("code", code);
     body.set("client_id", Deno.env.get("GITHUB_CLIENT_ID")!);
     body.set("client_secret", Deno.env.get("GITHUB_SECRET")!);
-    body.set("redirect_uri", `${Deno.env.get("BASE_DOMAIN")}/api/profile/auth/github`);
+    body.set("redirect_uri", `${Deno.env.get("BASE_DOMAIN_NAME")}/api/profile/auth/github`);
     body.set("grant_type", "authorization_code");
     const response = await fetch("https://github.com/login/oauth/access_token", {
       method: "POST",

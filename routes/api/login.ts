@@ -1,10 +1,11 @@
 import { HandlerContext } from "$fresh/server.ts";
 import { GoogleClient, GitHubClient } from "denoauth";
 
+console.log(`${Deno.env.get("BASE_DOMAIN_NAME")}/api/profile/auth/google`);
 export const GoogleObject = new GoogleClient({
   clientId: Deno.env.get("GOOGLE_CLIENT_ID")!,
   clientSecret: Deno.env.get("GOOGLE_SECRET")!,
-  redirect: `${Deno.env.get("BASE_DOMAIN")}/api/profile/auth/google`,
+  redirect: `${Deno.env.get("BASE_DOMAIN_NAME")}/api/profile/auth/google`,
   tokenUri: "https://oauth2.googleapis.com/token",
   scope: "https://www.googleapis.com/auth/userinfo.email",
 });
@@ -12,7 +13,7 @@ export const GoogleObject = new GoogleClient({
 export const GitHubObject = new GitHubClient({
   clientId: Deno.env.get("GITHUB_CLIENT_ID")!,
   clientSecret: Deno.env.get("GITHUB_SECRET")!,
-  redirect: `${Deno.env.get("BASE_DOMAIN")}/api/profile/auth/github`,
+  redirect: `${Deno.env.get("BASE_DOMAIN_NAME")}/api/profile/auth/github`,
   tokenUri: "https://github.com/login/oauth/authorize",
   scope: "user:email",
 });
