@@ -8,15 +8,19 @@ import * as $1 from "./routes/Past30DaysUserDataChart.tsx";
 import * as $2 from "./routes/TotalUseChart.tsx";
 import * as $3 from "./routes/_middleware.ts";
 import * as $4 from "./routes/api/joke.ts";
-import * as $5 from "./routes/checklist.tsx";
-import * as $6 from "./routes/developers.tsx";
-import * as $7 from "./routes/index.tsx";
-import * as $8 from "./routes/philosophy.tsx";
-import * as $9 from "./routes/profile.tsx";
+import * as $5 from "./routes/api/login.ts";
+import * as $6 from "./routes/api/profile/auth/github.ts";
+import * as $7 from "./routes/api/profile/auth/google.ts";
+import * as $8 from "./routes/checklist.tsx";
+import * as $9 from "./routes/developers.tsx";
+import * as $10 from "./routes/index.tsx";
+import * as $11 from "./routes/philosophy.tsx";
+import * as $12 from "./routes/profile.tsx";
 import * as $$0 from "./islands/Checklist.tsx";
 import * as $$1 from "./islands/ChecklistItem.tsx";
 import * as $$2 from "./islands/Header.tsx";
 import * as $$3 from "./islands/Profile.tsx";
+import * as $$4 from "./islands/Signup.tsx";
 
 const manifest = {
   routes: {
@@ -25,17 +29,21 @@ const manifest = {
     "./routes/TotalUseChart.tsx": $2,
     "./routes/_middleware.ts": $3,
     "./routes/api/joke.ts": $4,
-    "./routes/checklist.tsx": $5,
-    "./routes/developers.tsx": $6,
-    "./routes/index.tsx": $7,
-    "./routes/philosophy.tsx": $8,
-    "./routes/profile.tsx": $9,
+    "./routes/api/login.ts": $5,
+    "./routes/api/profile/auth/github.ts": $6,
+    "./routes/api/profile/auth/google.ts": $7,
+    "./routes/checklist.tsx": $8,
+    "./routes/developers.tsx": $9,
+    "./routes/index.tsx": $10,
+    "./routes/philosophy.tsx": $11,
+    "./routes/profile.tsx": $12,
   },
   islands: {
     "./islands/Checklist.tsx": $$0,
     "./islands/ChecklistItem.tsx": $$1,
     "./islands/Header.tsx": $$2,
     "./islands/Profile.tsx": $$3,
+    "./islands/Signup.tsx": $$4,
   },
   baseUrl: import.meta.url,
   config,

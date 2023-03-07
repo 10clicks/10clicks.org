@@ -2,6 +2,9 @@
 import Streak from '../components/Streak.tsx'
 import { DailyData, TotalClicks, Past30DaysUserData } from '../components/types/types.ts';
 import { useState } from 'preact/hooks'
+import Signup from './Signup.tsx'
+
+import useLocalStorage from '../components/hooks/useLocalStorage.ts';
 export default function Profile() {
   const [dailyData, setDailyData] = useState<DailyData>({
     data: [10, 9, 9, 5, 3, 2, 1, 0, 0, 0]
@@ -15,6 +18,18 @@ export default function Profile() {
     data: [10, 40, 30, 40, 20, 10, 3, 10, 40, 30, 40, 20, 10, 3, 10, 40, 30, 40, 20, 10, 3, 10, 40, 30, 40, 20, 10, 3, 10, 40]
   });
 
+  const {
+    storedValue: token,
+    setStoredValue: setToken
+  }= useLocalStorage('', 'token');
+
+  if (!token) {
+    return (
+      <div className='flex-grow flex flex-row items-center justify-center'>
+        <Signup/>
+      </div>
+    )
+  }
   return (
     <div className='w-4/5 lg:grid-cols-3 lg:grid flex flex-col mx-auto flex-grow'>
       <div className='col-span-1 flex flex-col items-center border-x border-black lg:py-16 py-4 px-8'>
