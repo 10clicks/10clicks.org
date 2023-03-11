@@ -8,7 +8,6 @@ export default function Header() {
   }
 
   useEffect(() => {
-    console.log(isMenuOpen);
     // slide menu in
     if (isMenuOpen) {
       if (!ref.current) return;

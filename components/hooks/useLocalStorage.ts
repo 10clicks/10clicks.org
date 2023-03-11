@@ -7,7 +7,6 @@ export default function useLocalStorage<Type>(initialValue: Type, key: string) {
       const date = parseInt(window.localStorage.getItem(key + "Date") as string, 10);
       if (date) {
         const dateObj = new Date(date);
-        console.log(dateObj);
         const today = new Date();
         if (dateObj.getDate() !== today.getDate()) {
           window.localStorage.removeItem(key);

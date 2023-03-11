@@ -1,4 +1,5 @@
 import { HandlerContext } from "$fresh/server.ts";
+import * as cookieDriver from "../../../../database/database.ts";
 
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
   const url = new URL(_req.url);
@@ -19,7 +20,6 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
       body,
     });
     const data = await response.text()
-    console.log(data);
 
     if (data) {
       const access_token = data.split("&")[0].split("=")[1];
@@ -29,8 +29,21 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
         },
       });
       const userData = await response.json();
-      console.log(JSON.stringify(userData));
-      return new Response("Success", { status: 200 });
+      const login = userData.login;
+      const user = await cookieDriver.getUser(login, "github");
+      let refreshToken;
+      if (!user) {
+        refreshToken = await cookieDriver.addUser(login, "github");
+      } else {
+        refreshToken = await cookieDriver.updateUserRefreshToken(user.key);
+      }
+      return new Response("Success", {
+        status: 307,
+        headers: {
+          "Set-Cookie": `refreshToken=${refreshToken}; SameSite=Lax; HttpOnly; Path=/`,
+          Location: "/profile"
+        },
+      });
     }
     return new Response("Invalid token", { status: 400 });
   }
