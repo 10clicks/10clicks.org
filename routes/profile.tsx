@@ -16,7 +16,11 @@ export default function Developers(props: any) {
       </Head>
       <div className="flex flex-col min-h-screen">
         <Header/> 
-        <Profile refreshToken={props.data.refreshToken}/>
+        <Profile 
+          refreshToken={props.data.refreshToken}
+          profileName={props.data.profileName}
+          profilePicture={props.data.profilePicture}
+        />
         <Footer/>
       </div>
     </>
@@ -27,8 +31,12 @@ export const handler: Handlers = {
   GET(req, ctx) {
     const cookies = getCookies(req.headers);
     const refreshToken = cookies.refreshToken;
+    const profileName = cookies.profileName;
+    const profilePicture = cookies.profilePicture;
     return ctx.render({
-      refreshToken
+      refreshToken,
+      profileName,
+      profilePicture
     });
   }
 };

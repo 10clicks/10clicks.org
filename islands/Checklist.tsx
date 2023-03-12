@@ -43,8 +43,25 @@ const data = [
   },
 ]
 
-export default function ChecklistDescription() {
+export default function ChecklistDescription(props: {
+  refreshToken: string
+}) {
   const {numberClicked, setNumberClicked} = useConfettiCheck();
+
+  function sendClickRequest(type: string) {
+    if (!props.refreshToken) return;
+    fetch('/api/click', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        refreshToken: props.refreshToken,
+        type: type
+      })
+    });
+  }
+
   return (
     <div className="lg:w-2/3 p-4 mx-auto mt-8 h-full flex flex-col h-full flex-grow">
       <div className="flex lg:flex-row flex-col gap-4 items-center">
@@ -58,7 +75,13 @@ export default function ChecklistDescription() {
       <div className="flex flex-col gap-4 mt-4 items-center h-full">
         {data.map((item, i) => {
           return (
-            <ChecklistItem name={item.name} description={item.description} setNumberClicked={setNumberClicked} index={i} />
+            <ChecklistItem 
+              name={item.name} 
+              description={item.description} 
+              setNumberClicked={setNumberClicked} 
+              index={i} 
+              sendClickRequest={sendClickRequest}
+            />
           )
         })}
       </div>

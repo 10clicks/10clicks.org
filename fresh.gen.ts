@@ -4,18 +4,21 @@
 
 import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/DailyUseChart.tsx";
-import * as $1 from "./routes/Past30DaysUserDataChart.tsx";
+import * as $1 from "./routes/Past10DaysUserDataChart.tsx";
 import * as $2 from "./routes/TotalUseChart.tsx";
 import * as $3 from "./routes/_middleware.ts";
-import * as $4 from "./routes/api/joke.ts";
-import * as $5 from "./routes/api/login.ts";
-import * as $6 from "./routes/api/profile/auth/github.ts";
-import * as $7 from "./routes/api/profile/auth/google.ts";
-import * as $8 from "./routes/checklist.tsx";
-import * as $9 from "./routes/developers.tsx";
-import * as $10 from "./routes/index.tsx";
-import * as $11 from "./routes/philosophy.tsx";
-import * as $12 from "./routes/profile.tsx";
+import * as $4 from "./routes/api/click.ts";
+import * as $5 from "./routes/api/joke.ts";
+import * as $6 from "./routes/api/login.ts";
+import * as $7 from "./routes/api/profile.ts";
+import * as $8 from "./routes/api/profile/auth/github.ts";
+import * as $9 from "./routes/api/profile/auth/google.ts";
+import * as $10 from "./routes/api/signout.ts";
+import * as $11 from "./routes/checklist.tsx";
+import * as $12 from "./routes/developers.tsx";
+import * as $13 from "./routes/index.tsx";
+import * as $14 from "./routes/philosophy.tsx";
+import * as $15 from "./routes/profile.tsx";
 import * as $$0 from "./islands/Checklist.tsx";
 import * as $$1 from "./islands/ChecklistItem.tsx";
 import * as $$2 from "./islands/Header.tsx";
@@ -25,18 +28,21 @@ import * as $$4 from "./islands/Signup.tsx";
 const manifest = {
   routes: {
     "./routes/DailyUseChart.tsx": $0,
-    "./routes/Past30DaysUserDataChart.tsx": $1,
+    "./routes/Past10DaysUserDataChart.tsx": $1,
     "./routes/TotalUseChart.tsx": $2,
     "./routes/_middleware.ts": $3,
-    "./routes/api/joke.ts": $4,
-    "./routes/api/login.ts": $5,
-    "./routes/api/profile/auth/github.ts": $6,
-    "./routes/api/profile/auth/google.ts": $7,
-    "./routes/checklist.tsx": $8,
-    "./routes/developers.tsx": $9,
-    "./routes/index.tsx": $10,
-    "./routes/philosophy.tsx": $11,
-    "./routes/profile.tsx": $12,
+    "./routes/api/click.ts": $4,
+    "./routes/api/joke.ts": $5,
+    "./routes/api/login.ts": $6,
+    "./routes/api/profile.ts": $7,
+    "./routes/api/profile/auth/github.ts": $8,
+    "./routes/api/profile/auth/google.ts": $9,
+    "./routes/api/signout.ts": $10,
+    "./routes/checklist.tsx": $11,
+    "./routes/developers.tsx": $12,
+    "./routes/index.tsx": $13,
+    "./routes/philosophy.tsx": $14,
+    "./routes/profile.tsx": $15,
   },
   islands: {
     "./islands/Checklist.tsx": $$0,

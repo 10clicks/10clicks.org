@@ -1,7 +1,6 @@
 import { HandlerContext } from "$fresh/server.ts";
 import { GoogleClient, GitHubClient } from "denoauth";
 
-console.log(`${Deno.env.get("BASE_DOMAIN_NAME")}/api/profile/auth/google`);
 export const GoogleObject = new GoogleClient({
   clientId: Deno.env.get("GOOGLE_CLIENT_ID")!,
   clientSecret: Deno.env.get("GOOGLE_SECRET")!,

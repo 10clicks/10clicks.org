@@ -6,6 +6,7 @@ interface ChecklistItemProps {
   description: string;
   setNumberClicked: StateUpdater<number>;
   index: number;
+  sendClickRequest: (type: string) => void;
 }
 export default function ChecklistItem(props: ChecklistItemProps) {
   const checklistButton = useRef<HTMLAnchorElement>(null);
@@ -17,6 +18,7 @@ export default function ChecklistItem(props: ChecklistItemProps) {
       setIsClicked(true);
       makeItemGreen();
       props.setNumberClicked(e => e + 1);
+      props.sendClickRequest(props.name.toLowerCase());
     } else {
       setIsClicked(false);
       makeItemRed();

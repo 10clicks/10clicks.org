@@ -37,12 +37,16 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
       } else {
         refreshToken = await cookieDriver.updateUserRefreshToken(user.key);
       }
+      
+      const headers: Headers = new Headers();
+      headers.append("Set-Cookie", `refreshToken=${refreshToken}; SameSite=Lax; HttpOnly; Path=/`);
+      headers.append("Location", "/profile");
+      headers.append("Set-Cookie", `profilePicture=${userData.avatar_url}; SameSite=Lax; HttpOnly; Path=/`);
+      headers.append("Set-Cookie", `profileName=${userData.login}; SameSite=Lax; HttpOnly; Path=/`);
+
       return new Response("Success", {
         status: 307,
-        headers: {
-          "Set-Cookie": `refreshToken=${refreshToken}; SameSite=Lax; HttpOnly; Path=/`,
-          Location: "/profile"
-        },
+        headers: headers,
       });
     }
     return new Response("Invalid token", { status: 400 });
