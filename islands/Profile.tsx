@@ -4,6 +4,7 @@ import { DailyData, TotalClicks, Past10DaysUserData, User } from '../components/
 import { useState } from 'preact/hooks'
 import Signup from './Signup.tsx'
 import { useFetchUserData } from '../components/hooks/useFetchUserData.ts';
+import Spinner from '../components/Spinner.tsx';
 
 export interface IProps {
   refreshToken: string | null;
@@ -68,19 +69,23 @@ export default function Profile(props: IProps) {
         </p> 
         <div className='border-dashed border-t border-black w-full'/>
         {
-          userData && (
+          userData ? (
             <Streak 
               total = {userData.streak ? userData.streak : 0}
               daily={[1, 1, 1, 0, 0, 1, 1]}
             />
+          ) : (
+            <Spinner size={10}/>
           )
         }
         <div className='border-dashed border-t border-black w-full mt-4'/>
         {
-          userData && (
+          userData ? (
             <p className='w-full mt-4'>
               Total clicks: {userData.totalClicks}
             </p>
+          ) : (
+            <Spinner size={10}/>
           )
         }
         <div className='border-dashed border-t border-black w-full mt-4'/>
@@ -88,12 +93,14 @@ export default function Profile(props: IProps) {
           Your Clicks for Last 10 Days
         </p>
         {
-          userData?.lastTimeClicked && (
+          userData?.lastTimeClicked ? (
             <p className='text-xs text-gray-600 py-1'>
               Valid as of {(new Date(userData.lastTimeClicked)).toString()}
               <br />
               Complete an item to update
             </p>
+          ) : (
+            <Spinner size={10}/>
           )
         }
         {

@@ -1,5 +1,7 @@
 import ChecklistItem from "./ChecklistItem.tsx"
 import useConfettiCheck from "../components/hooks/useConfettiCheck.ts";
+import Spinner from "../components/Spinner.tsx";
+
 import { useEffect, useState } from "preact/hooks";
 const data = [
   {
@@ -59,12 +61,14 @@ export default function ChecklistDescription(props: {
 
   useEffect(() => {
     // fetch user data
+    console.log("fetching click data");
     fetch('/api/clickData', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     }).then((res) => {
+      console.log(res);
       if (res.status === 200) {
         res.json().then((data) => {
           for (const key of Object.keys(data)) {
@@ -126,7 +130,6 @@ export default function ChecklistDescription(props: {
       unclickRequestTimeout = null;
     }, 500);
   }
-
   return (
     <div className="lg:w-2/3 p-4 mx-auto mt-8 h-full flex flex-col h-full flex-grow">
       <div className="flex lg:flex-row flex-col gap-4 items-center">
@@ -138,18 +141,27 @@ export default function ChecklistDescription(props: {
         } className="font-normal text-base">List is loosely ordered but should attempt to be followed in sequence. </p>
       </div>
       <div className="flex flex-col gap-4 mt-4 items-center h-full">
-        {clickData !== null && data.map((item, i) => {
-          return (
-            <ChecklistItem 
-              name={item.name} 
-              description={item.description} 
-              setNumberClicked={setNumberClicked} 
-              index={i} 
-              sendClickRequest={sendClickRequest}
-              sendUnclickRequest={sendUnclickRequest}
-            />
+        {clickData !== null ? 
+          data.map((item, i) => {
+            return (
+              <ChecklistItem 
+                name={item.name} 
+                description={item.description} 
+                setNumberClicked={setNumberClicked} 
+                index={i} 
+                sendClickRequest={sendClickRequest}
+                sendUnclickRequest={sendUnclickRequest}
+              />
+            )
+          }) : 
+          (
+            <div className="h-40 flex flex-row items-center justify-center">
+              <Spinner 
+                size={16}
+              />
+            </div>
           )
-        })}
+        }
       </div>
     </div>
   )
