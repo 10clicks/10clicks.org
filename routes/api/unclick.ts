@@ -10,7 +10,7 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
   const types = body.types as string[];
   if (refreshToken && types && types.length > 0) {
     try {
-      const result = await cookieDriver.processClicks(refreshToken, types);
+      const result = await cookieDriver.processUnclicks(refreshToken, types);
       if (result) {
         return new Response(JSON.stringify(result), { status: 200 });
       }

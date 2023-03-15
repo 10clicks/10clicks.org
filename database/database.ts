@@ -149,18 +149,26 @@ function daysBetween(startDate: Date, endDate: Date) {
   return (start - end) / oneDay;
 }
 
-export async function processClick(refreshToken: string, type: string) {
+export async function processClicks(refreshToken: string, types: string[]) {
   const user = await getUserByToken(refreshToken);
   if (!user) return null;
   const updates = {
-    totalClicks: user?.totalClicks as number + 1,
+    totalClicks: user?.totalClicks,
     todaysClicks: user?.todaysClicks as any,
     streak: user?.streak as number,
     lastTimeClicked: Date.now(),
     lastTimeCompleted: user?.lastTimeCompleted as number,
     last10DaysClicks: user?.last10DaysClicks as any,
   };
-  updates.todaysClicks[type] = true;
+  if (!updates.totalClicks) updates.totalClicks = 0;
+  let numberClicked = 0;
+  for (const type of types) {
+    if (updates.todaysClicks[type] === false) {
+      updates.todaysClicks[type] = true;
+      updates.totalClicks++;
+      numberClicked++;
+    }
+  }
 
   const lastTimeCompleted = user?.lastTimeCompleted as number;
   const lastTimeCompletedDate = new Date(lastTimeCompleted);
@@ -178,9 +186,9 @@ export async function processClick(refreshToken: string, type: string) {
         updates.last10DaysClicks[i] = 0;
       }
     }
-    updates.last10DaysClicks[0] = 1;
+    updates.last10DaysClicks[0] = numberClicked;
   } else {
-    updates.last10DaysClicks[0] = user?.last10DaysClicks[0] as number + 1;
+    updates.last10DaysClicks[0] = user?.last10DaysClicks[0] as number + numberClicked;
   }
   updates.lastTimeClicked = Date.now();
   if (lastTimeCompletedDate.getDate() !== today.getDate()) {
@@ -206,3 +214,42 @@ export async function processClick(refreshToken: string, type: string) {
 
   return cookieDB.update("users", user.key, updates);
 }
+
+export async function processUnclicks(refreshToken: string, types: string[]) {
+  const user = await getUserByToken(refreshToken);
+  if (!user) return null;
+  const updates = {
+    totalClicks: user?.totalClicks as number,
+    todaysClicks: user?.todaysClicks as any,
+    last10DaysClicks: user?.last10DaysClicks as any,
+  }
+  for (const type of types) {
+    if (user.todaysClicks[type as keyof User['todaysClicks']]) {
+      updates.todaysClicks[type] = false;
+      updates.last10DaysClicks[0] = updates?.last10DaysClicks[0] as number - 1;
+      updates.totalClicks--;
+    }
+  }
+  return cookieDB.update("users", user.key, updates);
+}
+
+export async function getClickData(refreshToken: string) {
+  const user = await getUserByToken(refreshToken);
+  if (!user) return null;
+  const lastTimeClicked = user?.lastTimeClicked as number;
+  const lastTimeClickedDate = new Date(lastTimeClicked);
+  const today = new Date();
+  if (lastTimeClickedDate.getDate() !== today.getDate()) {
+    // clear todaysClicks
+    const updates = {
+      todaysClicks: user?.todaysClicks as any,
+    }
+    for (const key of Object.keys(updates.todaysClicks)) {
+      updates.todaysClicks[key] = false;
+    }
+    await cookieDB.update("users", user.key, updates);
+  }
+
+  return user.todaysClicks;
+}
+  

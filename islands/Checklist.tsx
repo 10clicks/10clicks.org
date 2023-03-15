@@ -1,5 +1,6 @@
 import ChecklistItem from "./ChecklistItem.tsx"
 import useConfettiCheck from "../components/hooks/useConfettiCheck.ts";
+import { useEffect, useState } from "preact/hooks";
 const data = [
   {
     name: "Sleep",
@@ -43,23 +44,87 @@ const data = [
   },
 ]
 
+let clickRequestTimeout: any = null;
+let currentClickTypes: string[] = []
+
+let unclickRequestTimeout: any = null;
+let currentUnclickTypes: string[] = []
+
 export default function ChecklistDescription(props: {
   refreshToken: string
 }) {
   const {numberClicked, setNumberClicked} = useConfettiCheck();
+  const [ clickData, setClickData ] = useState<any>(null);
 
-  function sendClickRequest(type: string) {
-    if (!props.refreshToken) return;
-    fetch('/api/click', {
-      method: 'POST',
+
+  useEffect(() => {
+    // fetch user data
+    fetch('/api/clickData', {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        refreshToken: props.refreshToken,
-        type: type
-      })
+    }).then((res) => {
+      if (res.status === 200) {
+        res.json().then((data) => {
+          for (const key of Object.keys(data)) {
+            // uppercase first letter
+            const id = key.charAt(0).toUpperCase() + key.slice(1);
+            window.localStorage.setItem(id, JSON.stringify(data[key]));
+            window.localStorage.setItem(id + "Date",  JSON.stringify(new Date().getTime()));
+          }
+          setClickData(data);
+        })
+      } else {
+        setClickData({});
+      }
     });
+  }, [props.refreshToken]);
+
+  function sendClickRequest(type: string) {
+    if (!props.refreshToken) return;
+    if (clickRequestTimeout) {
+      currentClickTypes.push(type);
+      return;
+    }
+    currentClickTypes.push(type);
+    clickRequestTimeout = setTimeout(() => {
+      fetch('/api/click', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          refreshToken: props.refreshToken,
+          types: currentClickTypes
+        })
+      });
+      currentClickTypes = [];
+      clickRequestTimeout = null;
+    }, 500);
+  }
+
+  function sendUnclickRequest(type: string) {
+    if (!props.refreshToken) return;
+    if (unclickRequestTimeout) {
+      currentUnclickTypes.push(type);
+      return;
+    }
+    currentUnclickTypes.push(type);
+    unclickRequestTimeout = setTimeout(() => {
+      fetch('/api/unclick', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          refreshToken: props.refreshToken,
+          types: currentUnclickTypes
+        })
+      });
+      currentUnclickTypes = [];
+      unclickRequestTimeout = null;
+    }, 500);
   }
 
   return (
@@ -73,7 +138,7 @@ export default function ChecklistDescription(props: {
         } className="font-normal text-base">List is loosely ordered but should attempt to be followed in sequence. </p>
       </div>
       <div className="flex flex-col gap-4 mt-4 items-center h-full">
-        {data.map((item, i) => {
+        {clickData !== null && data.map((item, i) => {
           return (
             <ChecklistItem 
               name={item.name} 
@@ -81,6 +146,7 @@ export default function ChecklistDescription(props: {
               setNumberClicked={setNumberClicked} 
               index={i} 
               sendClickRequest={sendClickRequest}
+              sendUnclickRequest={sendUnclickRequest}
             />
           )
         })}

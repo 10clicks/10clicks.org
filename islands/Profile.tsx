@@ -88,6 +88,15 @@ export default function Profile(props: IProps) {
           Your Clicks for Last 10 Days
         </p>
         {
+          userData?.lastTimeClicked && (
+            <p className='text-xs text-gray-600 py-1'>
+              Valid as of {(new Date(userData.lastTimeClicked)).toString()}
+              <br />
+              Complete an item to update
+            </p>
+          )
+        }
+        {
           userData && (
             <img
               src={`/Past10DaysUserDataChart?data=${extra10DaysData(userData).data.join(',')}`}

@@ -5,12 +5,9 @@ import * as cookieDriver from "../../database/database.ts";
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
   // get refreshToken from cookie
   const refreshToken = _req.headers.get("Cookie")?.split("refreshToken=")[1].split(";")[0];
-  // get which button was clicked from body
-  const body = await _req.json();
-  const types = body.types as string[];
-  if (refreshToken && types && types.length > 0) {
+  if (refreshToken) {
     try {
-      const result = await cookieDriver.processClicks(refreshToken, types);
+      const result = await cookieDriver.getClickData(refreshToken);
       if (result) {
         return new Response(JSON.stringify(result), { status: 200 });
       }

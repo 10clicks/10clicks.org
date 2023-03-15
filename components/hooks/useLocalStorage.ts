@@ -31,6 +31,18 @@ export default function useLocalStorage<Type>(initialValue: Type, key: string) {
     }
   }, [storedValue]);
 
+  useEffect(() => {
+    // set the value to the local storage value if it exists
+    try {
+      const item = window.localStorage.getItem(key);
+      if (item) {
+        setStoredValue(JSON.parse(item));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [initialValue]);
+
   return {storedValue, setStoredValue};
   
 }
