@@ -7,7 +7,6 @@ export default function useLocalStorage<Type>(initialValue: Type, key: string) {
       const date = parseInt(window.localStorage.getItem(key + "Date") as string, 10);
       if (date) {
         const dateObj = new Date(date);
-        console.log(dateObj);
         const today = new Date();
         if (dateObj.getDate() !== today.getDate()) {
           window.localStorage.removeItem(key);
@@ -31,6 +30,18 @@ export default function useLocalStorage<Type>(initialValue: Type, key: string) {
       console.log(error);
     }
   }, [storedValue]);
+
+  useEffect(() => {
+    // set the value to the local storage value if it exists
+    try {
+      const item = window.localStorage.getItem(key);
+      if (item) {
+        setStoredValue(JSON.parse(item));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [initialValue]);
 
   return {storedValue, setStoredValue};
   

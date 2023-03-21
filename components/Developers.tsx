@@ -1,6 +1,6 @@
 export default function DevelopersDescription() {
   return (
-    <div className="lg:w-2/3 p-4 mx-auto mt-12">
+    <div className="lg:w-2/3 p-4 mx-auto mt-12 flex-grow">
       <div>
         <h1 className="font-normal text-2xl">Developers</h1>
       </div>

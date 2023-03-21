@@ -1,11 +1,12 @@
 import { Head } from "$fresh/runtime.ts";
 import Header from "../islands/Header.tsx";
 import Footer from "../components/Footer.tsx";
-import ChecklistDescription from "../islands/Checklist.tsx";
+import Profile from "../islands/Profile.tsx";
 import type { Handlers } from "$fresh/server.ts";
 import { getCookies } from "cookie";
 
-export default function Checklist(props: any) {
+
+export default function Developers(props: any) {
   return (
     <>
       <Head>
@@ -15,8 +16,10 @@ export default function Checklist(props: any) {
       </Head>
       <div className="flex flex-col min-h-screen">
         <Header/> 
-        <ChecklistDescription
+        <Profile 
           refreshToken={props.data.refreshToken}
+          profileName={props.data.profileName}
+          profilePicture={props.data.profilePicture}
         />
         <Footer/>
       </div>
@@ -28,8 +31,14 @@ export const handler: Handlers = {
   GET(req, ctx) {
     const cookies = getCookies(req.headers);
     const refreshToken = cookies.refreshToken;
+    const profileName = cookies.profileName;
+    const profilePicture = cookies.profilePicture;
     return ctx.render({
-      refreshToken
+      refreshToken,
+      profileName,
+      profilePicture
     });
   }
 };
+
+    

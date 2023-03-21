@@ -6,26 +6,39 @@ interface ChecklistItemProps {
   description: string;
   setNumberClicked: StateUpdater<number>;
   index: number;
+  sendClickRequest: (type: string) => void;
+  sendUnclickRequest: (type: string) => void;
 }
 export default function ChecklistItem(props: ChecklistItemProps) {
   const checklistButton = useRef<HTMLAnchorElement>(null);
+  // props.refresh is a hack to force a rerender when data is initially loaded
   const {storedValue: isClicked, setStoredValue:setIsClicked} = useLocalStorage(false, props.name);
+
+  useEffect(() => {
+    if (isClicked) {
+      makeItemGreen();
+    } else {
+      makeItemRed();
+    }
+  }, [isClicked]);
+
   function turnOnChecklistItem() {
     // return the scale of the button back to 1
     if (!checklistButton.current) return;
     if (!isClicked) {
       setIsClicked(true);
-      makeItemGreen();
       props.setNumberClicked(e => e + 1);
+      props.sendClickRequest(props.name.toLowerCase());
     } else {
       setIsClicked(false);
-      makeItemRed();
       props.setNumberClicked(e => e - 1);
+      props.sendUnclickRequest(props.name.toLowerCase());
     }
   }
 
   function makeItemGreen() {
     if (!checklistButton.current) return;
+    if ((checklistButton.current.children[0] as HTMLDivElement).style.background == "#1DB954") return;
     checklistButton.current.style.transform = "scale(1)";
     // shake the button
     checklistButton.current.animate([
@@ -44,6 +57,7 @@ export default function ChecklistItem(props: ChecklistItemProps) {
 
   function makeItemRed() {
     if (!checklistButton.current) return;
+    if ((checklistButton.current.children[0] as HTMLDivElement).style.background == "#FFFFFF") return;
     checklistButton.current.style.transform = "";
     (checklistButton.current.children[0] as HTMLDivElement).style.background = "#FFFFFF";
   }
