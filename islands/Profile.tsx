@@ -119,7 +119,7 @@ export default function Profile(props: IProps) {
           Your Clicks for Last 10 Days
         </p>
         {
-          userData?.lastTimeClicked ? (
+          (userData?.lastTimeClicked !== null && userData?.lastTimeCompleted !== undefined) ? (
             <p className='text-xs text-gray-600 py-1'>
               Valid as of {(new Date(userData.lastTimeClicked)).toString()}
               <br />
