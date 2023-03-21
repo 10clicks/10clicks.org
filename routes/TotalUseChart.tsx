@@ -10,6 +10,15 @@ export const handler: Handlers = {
       return new Response("Missing data query parameter", { status: 400 });
     }
     try {
+      const labels = [];
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        // get the day name shortened
+        const day = date.toLocaleDateString("en-US", { weekday: "short" });
+        labels.push(day);
+      }
+
       // parse the data query parameter into an array of numbers
       const parsedData = data.split(",").map((x) => parseInt(x, 10));
 
@@ -36,7 +45,7 @@ export const handler: Handlers = {
           }
         },
         data: {
-          labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+          labels,
           datasets: [{
             label: "Total Clicks Over the Past 7 Days",
             data: parsedData,

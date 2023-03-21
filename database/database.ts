@@ -36,6 +36,33 @@ interface User {
   "key": string;
 }
 
+interface GlobalData {
+  "lastTimeClickProccessed": number,
+  "dailyTotalUse": {
+    "sleep": number,
+    "food": number,
+    "workout": number,
+    "clean": number,
+    "socialize": number,
+    "dulce": number,
+    "hobby": number,
+    "goal": number,
+    "read": number,
+    "journal": number
+  },
+  "last7DaysUse": {
+    "0": number,
+    "1": number,
+    "2": number,
+    "3": number,
+    "4": number,
+    "5": number,
+    "6": number
+  },
+  "key": string
+}
+
+
 const userKeys = {
   "refreshToken": null,
   "google": null,
@@ -211,8 +238,8 @@ export async function processClicks(refreshToken: string, types: string[]) {
       updates.lastTimeCompleted = Date.now();
     }
   }
-
-  return cookieDB.update("users", user.key, updates);
+  await cookieDB.update("users", user.key, updates);
+  return clickUpdateGlobalClickData(types);
 }
 
 export async function processUnclicks(refreshToken: string, types: string[]) {
@@ -230,7 +257,8 @@ export async function processUnclicks(refreshToken: string, types: string[]) {
       updates.totalClicks--;
     }
   }
-  return cookieDB.update("users", user.key, updates);
+  await cookieDB.update("users", user.key, updates);
+  return unclickUpdateGlobalClickData(types);
 }
 
 export async function getClickData(refreshToken: string) {
@@ -253,3 +281,70 @@ export async function getClickData(refreshToken: string) {
   return user.todaysClicks;
 }
   
+export async function clickUpdateGlobalClickData(type: string[]) {
+  const globalDataArr = await cookieDB.select("global", "") as GlobalData[];
+  const globalData = globalDataArr[0];
+  const lastTimeClickProccessed = globalData.lastTimeClickProccessed;
+  const lastTimeClickProccessedDate = new Date(lastTimeClickProccessed);
+  const today = new Date();
+  let updates = {
+    dailyTotalUse: globalData.dailyTotalUse as any,
+    last7DaysUse: globalData.last7DaysUse as any,
+    lastTimeClickProccessed: Date.now(),
+  }
+  if (lastTimeClickProccessedDate.getDate() !== today.getDate()) {
+    // clear dailyTotalUse
+    updates.dailyTotalUse = globalData.dailyTotalUse as any;
+    for (const key of Object.keys(updates.dailyTotalUse)) {
+      updates.dailyTotalUse[key] = 0;
+    }
+    // move back last7DaysUse by date difference
+    const daysToMoveBack = daysBetween(lastTimeClickProccessedDate, today);
+    for (let i = 6; i >= 0; i--) {
+      if (i + daysToMoveBack <= 6) {
+        updates.last7DaysUse[i + daysToMoveBack] = updates.last7DaysUse[i];
+      } else {
+        updates.last7DaysUse[i] = 0;
+      }
+    }
+    updates.last7DaysUse[0] = 0;
+  }
+  for (const t of type) {
+    updates.dailyTotalUse[t] = updates.dailyTotalUse[t] as number + 1;
+  }
+  updates.last7DaysUse["0"] = updates.last7DaysUse["0"] as number + type.length;
+  await cookieDB.update("global", globalData.key, updates);
+}
+
+export async function unclickUpdateGlobalClickData(type: string[]) {
+  const globalDataArr = await cookieDB.select("global", "") as GlobalData[];
+  const globalData = globalDataArr[0];
+  const updates = {
+    dailyTotalUse: globalData.dailyTotalUse as any,
+    last7DaysUse: globalData.last7DaysUse as any,
+  }
+  for (const t of type) {
+    updates.dailyTotalUse[t] = updates.dailyTotalUse[t] as number - 1;
+  }
+  updates.last7DaysUse["0"] = updates.last7DaysUse["0"] as number - type.length;
+  await cookieDB.update("global", globalData.key, updates);
+}
+
+export async function getGlobalClickData() {
+  const globalDataArr = await cookieDB.select("global", "") as GlobalData[];
+  const globalData = globalDataArr[0];
+  const lastTimeClickProccessed = globalData.lastTimeClickProccessed;
+  const lastTimeClickProccessedDate = new Date(lastTimeClickProccessed);
+  const today = new Date();
+  if (lastTimeClickProccessedDate.getDate() !== today.getDate()) {
+    // clear dailyTotalUse
+    const updates = {
+      dailyTotalUse: globalData.dailyTotalUse as any,
+    }
+    for (const key of Object.keys(updates.dailyTotalUse)) {
+      updates.dailyTotalUse[key] = 0;
+    }
+    await cookieDB.update("global", globalData.key, updates);
+  }
+  return globalData;
+}

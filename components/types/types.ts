@@ -47,3 +47,29 @@ export interface User {
     "journal": boolean | null;
   };
 }
+
+export interface GlobalData {
+  "lastTimeClickProccessed": number,
+  "dailyTotalUse": {
+    "sleep": number,
+    "food": number,
+    "workout": number,
+    "clean": number,
+    "socialize": number,
+    "dulce": number,
+    "hobby": number,
+    "goal": number,
+    "read": number,
+    "journal": number
+  },
+  "last7DaysUse": {
+    "0": number,
+    "1": number,
+    "2": number,
+    "3": number,
+    "4": number,
+    "5": number,
+    "6": number
+  },
+  "key": string
+}

@@ -61,14 +61,12 @@ export default function ChecklistDescription(props: {
 
   useEffect(() => {
     // fetch user data
-    console.log("fetching click data");
     fetch('/api/clickData', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     }).then((res) => {
-      console.log(res);
       if (res.status === 200) {
         res.json().then((data) => {
           for (const key of Object.keys(data)) {

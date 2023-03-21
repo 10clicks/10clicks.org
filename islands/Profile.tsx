@@ -1,9 +1,10 @@
 // import DailyUseChart from '../components/DailyUseChart.tsx'
 import Streak from '../components/Streak.tsx'
-import { DailyData, TotalClicks, Past10DaysUserData, User } from '../components/types/types.ts';
+import { DailyData, TotalClicks, Past10DaysUserData, User, GlobalData } from '../components/types/types.ts';
 import { useState } from 'preact/hooks'
 import Signup from './Signup.tsx'
 import { useFetchUserData } from '../components/hooks/useFetchUserData.ts';
+import { useFetchGlobalData } from '../components/hooks/useFetchGlobalData.ts';
 import Spinner from '../components/Spinner.tsx';
 
 export interface IProps {
@@ -12,7 +13,20 @@ export interface IProps {
   profilePicture: string | null;
 }
 
-function extra10DaysData(userData: User) {
+const TypeMap: any = {
+"sleep": 0,
+"food": 1,
+"workout": 2,
+"clean": 3,
+"socialize": 4,
+"dulce": 5,
+"hobby": 6,
+"goal": 7,
+"read": 8,
+"journal": 9
+}
+
+function extract10DaysData(userData: User) {
   const ret: Past10DaysUserData = {
     data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   }
@@ -22,17 +36,29 @@ function extra10DaysData(userData: User) {
   return ret;
 }
 
+function extract7DaysData(globalData: GlobalData) {
+  const ret = {
+    data: [0, 0, 0, 0, 0, 0, 0]
+  }
+  for (let i = 0; i <= 6; i++) {
+    ret.data[i] = globalData.last7DaysUse[(6 - i).toString() as keyof GlobalData['last7DaysUse']] as any;
+  }
+  return ret;
+}
+
+function extractTotalClicks(globalData: GlobalData) {
+  const ret = {
+    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  }
+  for (const key in globalData.dailyTotalUse) {
+    ret.data[TypeMap[key]] = globalData.dailyTotalUse[key as keyof GlobalData['dailyTotalUse']] as any;
+  }
+  return ret;
+}
+
 export default function Profile(props: IProps) {
   const { userData, setUserData } = useFetchUserData(props.refreshToken as string);
-  const [dailyData, setDailyData] = useState<DailyData>({
-    data: [10, 9, 6, 8, 7, 9, 10, 3, 4, 5]
-  });
-  const [totalClicks, setTotalClicks] = useState<TotalClicks>({
-    data: [
-      10, 19, 25, 33, 40, 49, 59,
-    ]
-  });
-
+  const { globalData, setGlobalData } = useFetchGlobalData(props.refreshToken as string);
   function signout() {
     fetch('/api/signout', {
       method: 'GET',
@@ -106,7 +132,7 @@ export default function Profile(props: IProps) {
         {
           userData && (
             <img
-              src={`/Past10DaysUserDataChart?data=${extra10DaysData(userData).data.join(',')}`}
+              src={`/Past10DaysUserDataChart?data=${extract10DaysData(userData).data.join(',')}`}
               class="mx-auto my-4"
               alt="Your Clicks for Last 30 Days"
             />
@@ -118,22 +144,34 @@ export default function Profile(props: IProps) {
         <p className='ml-6 text-lg'>
           Public Data
         </p>
+        <p className='ml-6 text-sm text-gray-600'>
+          May take some time to update
+        </p>
         <p className='text-sm mx-auto pt-4'>
           Daily Total Use (All Users)
         </p>
-        <img
-          src={`/DailyUseChart?data=${dailyData.data.join(',')}`}
-          class="mx-auto my-4 lg:h-96"
-          alt="Overall Daily Use for All Users"
-        />
-        <p className='text-sm mx-auto pt-2'>
-          Weekly Total Clicks (All Users)
-        </p>
-        <img
-          src={`/TotalUseChart?data=${totalClicks.data.join(',')}`}
-          class="mx-auto my-4 lg:h-96"
-          alt="Overall Weekly Use for All Users"
-        />
+        {
+          globalData ? (
+            <>
+              <img
+                src={`/DailyUseChart?data=${extractTotalClicks(globalData).data.join(',')}`}
+                class="mx-auto my-4 lg:h-96"
+                alt="Overall Daily Use for All Users"
+              />
+              <p className='text-sm mx-auto pt-2'>
+                Weekly Total Clicks (All Users)
+              </p>
+              <img
+                src={`/TotalUseChart?data=${extract7DaysData(globalData).data.join(',')}`}
+                class="mx-auto my-4 lg:h-96"
+                alt="Overall Weekly Use for All Users"
+              />
+            </>
+          ) : (
+            <Spinner size={10}/>
+          )
+        }
+       
       </div>
     </div>
   )
