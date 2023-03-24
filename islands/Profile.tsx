@@ -96,10 +96,9 @@ export default function Profile(props: IProps) {
         <div className='border-dashed border-t border-black w-full'/>
         {
           userData ? (
-            <Streak 
-              total = {userData.streak ? userData.streak : 0}
-              daily={[1, 1, 1, 0, 0, 1, 1]}
-            />
+            <p className='w-full mt-4'>
+              Total clicks: {userData.totalClicks}
+            </p>
           ) : (
             <Spinner size={10}/>
           )
@@ -107,9 +106,10 @@ export default function Profile(props: IProps) {
         <div className='border-dashed border-t border-black w-full mt-4'/>
         {
           userData ? (
-            <p className='w-full mt-4'>
-              Total clicks: {userData.totalClicks}
-            </p>
+            <Streak 
+              total = {userData.streak ? userData.streak : 0}
+              daily={[1, 1, 1, 0, 0, 1, 1]}
+            />
           ) : (
             <Spinner size={10}/>
           )
