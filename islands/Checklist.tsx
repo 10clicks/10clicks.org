@@ -91,6 +91,7 @@ export default function ChecklistDescription(props: {
     }
     currentClickTypes.push(type);
     clickRequestTimeout = setTimeout(() => {
+      console.log(currentClickTypes);
       fetch('/api/click', {
         method: 'POST',
         headers: {
@@ -103,7 +104,7 @@ export default function ChecklistDescription(props: {
       });
       currentClickTypes = [];
       clickRequestTimeout = null;
-    }, 500);
+    }, 600);
   }
 
   function sendUnclickRequest(type: string) {
@@ -114,6 +115,7 @@ export default function ChecklistDescription(props: {
     }
     currentUnclickTypes.push(type);
     unclickRequestTimeout = setTimeout(() => {
+      console.log(currentUnclickTypes);
       fetch('/api/unclick', {
         method: 'POST',
         headers: {
@@ -126,7 +128,7 @@ export default function ChecklistDescription(props: {
       });
       currentUnclickTypes = [];
       unclickRequestTimeout = null;
-    }, 500);
+    }, 600);
   }
   return (
     <div className="lg:w-2/3 p-4 mx-auto mt-8 h-full flex flex-col h-full flex-grow">
