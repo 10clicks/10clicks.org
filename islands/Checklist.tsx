@@ -91,7 +91,6 @@ export default function ChecklistDescription(props: {
     }
     currentClickTypes.push(type);
     clickRequestTimeout = setTimeout(() => {
-      console.log(currentClickTypes);
       fetch('/api/click', {
         method: 'POST',
         headers: {
@@ -115,7 +114,6 @@ export default function ChecklistDescription(props: {
     }
     currentUnclickTypes.push(type);
     unclickRequestTimeout = setTimeout(() => {
-      console.log(currentUnclickTypes);
       fetch('/api/unclick', {
         method: 'POST',
         headers: {
