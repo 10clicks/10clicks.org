@@ -8,7 +8,7 @@ export default function useLocalStorage<Type>(initialValue: Type, key: string) {
       if (date) {
         const dateObj = new Date(date);
         const today = new Date();
-        if (dateObj.getDate() !== today.getDate()) {
+        if (dateObj.getUTCDate() !== today.getUTCDate()) {
           window.localStorage.removeItem(key);
           window.localStorage.removeItem(key + "Date");
           item = null;
