@@ -189,11 +189,13 @@ export async function processClicks(refreshToken: string, types: string[]) {
   };
   if (!updates.totalClicks) updates.totalClicks = 0;
   let numberClicked = 0;
+  const usedTypes = [];
   for (const type of types) {
     if (updates.todaysClicks[type] === false) {
       updates.todaysClicks[type] = true;
       updates.totalClicks++;
       numberClicked++;
+      usedTypes.push(type);
     }
   }
 
@@ -222,8 +224,6 @@ export async function processClicks(refreshToken: string, types: string[]) {
     // check if the dates are a day apart
     if (daysBetween(lastTimeCompletedDate, today) > 1) {
       updates.streak = 0;
-    } else {
-      updates.streak = user?.streak as number + 1;
     }
     // check if all 10 items were clicked
     let allClicked = true;
@@ -239,7 +239,7 @@ export async function processClicks(refreshToken: string, types: string[]) {
     }
   }
   await cookieDB.update("users", user.key, updates);
-  return clickUpdateGlobalClickData(types);
+  return clickUpdateGlobalClickData(usedTypes);
 }
 
 export async function processUnclicks(refreshToken: string, types: string[]) {
@@ -250,15 +250,17 @@ export async function processUnclicks(refreshToken: string, types: string[]) {
     todaysClicks: user?.todaysClicks as any,
     last10DaysClicks: user?.last10DaysClicks as any,
   }
+  const usedTypes = [];
   for (const type of types) {
     if (user.todaysClicks[type as keyof User['todaysClicks']]) {
       updates.todaysClicks[type] = false;
       updates.last10DaysClicks[0] = updates?.last10DaysClicks[0] as number - 1;
       updates.totalClicks--;
+      usedTypes.push(type);
     }
   }
   await cookieDB.update("users", user.key, updates);
-  return unclickUpdateGlobalClickData(types);
+  return unclickUpdateGlobalClickData(usedTypes);
 }
 
 export async function getClickData(refreshToken: string) {
@@ -281,7 +283,7 @@ export async function getClickData(refreshToken: string) {
   return user.todaysClicks;
 }
   
-export async function clickUpdateGlobalClickData(type: string[]) {
+export async function clickUpdateGlobalClickData(types: string[]) {
   const globalDataArr = await cookieDB.select("global", "") as GlobalData[];
   const globalData = globalDataArr[0];
   const lastTimeClickProccessed = globalData.lastTimeClickProccessed;
@@ -309,24 +311,24 @@ export async function clickUpdateGlobalClickData(type: string[]) {
     }
     updates.last7DaysUse[0] = 0;
   }
-  for (const t of type) {
+  for (const t of types) {
     updates.dailyTotalUse[t] = updates.dailyTotalUse[t] as number + 1;
   }
-  updates.last7DaysUse["0"] = updates.last7DaysUse["0"] as number + type.length;
-  await cookieDB.update("global", globalData.key, updates);
+  updates.last7DaysUse["0"] = updates.last7DaysUse["0"] as number + types.length;
+  return cookieDB.update("global", globalData.key, updates);
 }
 
-export async function unclickUpdateGlobalClickData(type: string[]) {
+export async function unclickUpdateGlobalClickData(types: string[]) {
   const globalDataArr = await cookieDB.select("global", "") as GlobalData[];
   const globalData = globalDataArr[0];
   const updates = {
     dailyTotalUse: globalData.dailyTotalUse as any,
     last7DaysUse: globalData.last7DaysUse as any,
   }
-  for (const t of type) {
+  for (const t of types) {
     updates.dailyTotalUse[t] = updates.dailyTotalUse[t] as number - 1;
   }
-  updates.last7DaysUse["0"] = updates.last7DaysUse["0"] as number - type.length;
+  updates.last7DaysUse["0"] = updates.last7DaysUse["0"] as number - types.length;
   await cookieDB.update("global", globalData.key, updates);
 }
 

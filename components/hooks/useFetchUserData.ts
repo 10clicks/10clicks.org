@@ -6,9 +6,23 @@ export function useFetchUserData(refreshToken: string) {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await fetch('/api/profile');
-      const data = await response.json();
-      setUserData(data);
+      try {
+        const response = await fetch('/api/profile');
+        const data = await response.json();
+        setUserData(data);
+      } catch (e) {
+        // Sign user out 
+        fetch('/api/signout', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }).then((res) => {
+          if (res.status === 200) {
+            window.location.href = '/profile';
+          }
+        });
+      }
     };
     if (refreshToken) {
       fetchUserData();
