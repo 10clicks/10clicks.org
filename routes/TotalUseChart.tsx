@@ -13,7 +13,7 @@ export const handler: Handlers = {
       const labels = [];
       for (let i = 6; i >= 0; i--) {
         const date = new Date();
-        date.setDate(date.getDate() - i);
+        date.setDate(date.getUTCDate() - i);
         // get the day name shortened
         const day = date.toLocaleDateString("en-US", { weekday: "short" });
         labels.push(day);

@@ -169,8 +169,8 @@ function daysBetween(startDate: Date, endDate: Date) {
   const oneDay = 1000 * 60 * 60 * 24;
 
   // A day in UTC always lasts 24 hours (unlike in other time formats)
-  const start = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
-  const end = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+  const start = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getUTCDate());
+  const end = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getUTCDate());
 
   // so it's safe to divide by 24 hours
   return (start - end) / oneDay;
@@ -204,7 +204,7 @@ export async function processClicks(refreshToken: string, types: string[]) {
   const today = new Date();
   const lastTimeClicked = user?.lastTimeClicked as number;
   const lastTimeClickedDate = new Date(lastTimeClicked);
-  if (lastTimeClickedDate.getDate() !== today.getDate()) {
+  if (lastTimeClickedDate.getUTCDate() !== today.getUTCDate()) {
     // update last10DaysClicks
     // move back by x number of days which is the number of 24 hour periods from now
     const daysToMoveBack = daysBetween(lastTimeClickedDate, today);
@@ -220,7 +220,7 @@ export async function processClicks(refreshToken: string, types: string[]) {
     updates.last10DaysClicks[0] = user?.last10DaysClicks[0] as number + numberClicked;
   }
   updates.lastTimeClicked = Date.now();
-  if (lastTimeCompletedDate.getDate() !== today.getDate()) {
+  if (lastTimeCompletedDate.getUTCDate() !== today.getUTCDate()) {
     // check if the dates are a day apart
     if (daysBetween(lastTimeCompletedDate, today) > 1) {
       updates.streak = 0;
@@ -269,7 +269,7 @@ export async function getClickData(refreshToken: string) {
   const lastTimeClicked = user?.lastTimeClicked as number;
   const lastTimeClickedDate = new Date(lastTimeClicked);
   const today = new Date();
-  if (lastTimeClickedDate.getDate() !== today.getDate()) {
+  if (lastTimeClickedDate.getUTCDate() !== today.getUTCDate()) {
     // clear todaysClicks
     const updates = {
       todaysClicks: user?.todaysClicks as any,
@@ -294,7 +294,7 @@ export async function clickUpdateGlobalClickData(types: string[]) {
     last7DaysUse: globalData.last7DaysUse as any,
     lastTimeClickProccessed: Date.now(),
   }
-  if (lastTimeClickProccessedDate.getDate() !== today.getDate()) {
+  if (lastTimeClickProccessedDate.getUTCDate() !== today.getUTCDate()) {
     // clear dailyTotalUse
     updates.dailyTotalUse = globalData.dailyTotalUse as any;
     for (const key of Object.keys(updates.dailyTotalUse)) {
@@ -338,7 +338,7 @@ export async function getGlobalClickData() {
   const lastTimeClickProccessed = globalData.lastTimeClickProccessed;
   const lastTimeClickProccessedDate = new Date(lastTimeClickProccessed);
   const today = new Date();
-  if (lastTimeClickProccessedDate.getDate() !== today.getDate()) {
+  if (lastTimeClickProccessedDate.getUTCDate() !== today.getUTCDate()) {
     // clear dailyTotalUse
     const updates = {
       dailyTotalUse: globalData.dailyTotalUse as any,
