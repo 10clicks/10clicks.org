@@ -62,7 +62,6 @@ interface GlobalData {
   "key": string
 }
 
-
 const userKeys = {
   "refreshToken": null,
   "google": null,
