@@ -10,7 +10,7 @@ export default function DevelopersDescription() {
       }}>
         Benjamin DeWeese van Schooneveld
         <br />
-        Student at the University of Oregon.
+        Student at New York University.
         <br />
         Strong interests in Web Scraping, Cyber Security, Python Scripting, Product Development and Delivery.
         <br />
